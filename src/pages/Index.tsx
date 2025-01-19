@@ -16,7 +16,7 @@ const Index = () => {
               🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨
             </div>
             <div className="text-2xl font-bold mb-4 text-purple-900">
-              🎨 <Link to="/" className="hover:opacity-75">HOME</Link> 💩 <Link to="/manifesto" className="hover:opacity-75">MANIFESTO</Link> 🏆 LEADERBOARD 🎨
+              🎨 <Link to="/" className="hover:opacity-75">HOME</Link> 💩 <Link to="/manifesto" className="hover:opacity-75">MANIFESTO</Link> 🎨 <Link to="/leaderboard" className="hover:opacity-75">LEADERBOARD</Link> 🎨
             </div>
             <div className="text-2xl mb-8 text-purple-900">
               🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨
@@ -40,7 +40,7 @@ const Index = () => {
               🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
             </div>
             <div className="text-2xl font-bold mb-4 text-purple-900">
-              🎨 LEADERBOARD 🎨
+              🎨 <Link to="/leaderboard" className="hover:opacity-75">LEADERBOARD</Link> 🎨
             </div>
             <div className="text-2xl mb-8 text-purple-900">
               🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
