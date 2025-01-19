@@ -93,7 +93,7 @@ const Manifesto = () => {
           </div>
         ))}
       </div>
-      
+
       <div className="container mx-auto px-4 text-center pb-12">
         {!isMobile ? (
           <div className="mb-8 pt-8">
@@ -133,7 +133,7 @@ const Manifesto = () => {
           </div>
         )}
 
-        <div className="prose prose-lg mx-auto bg-white/80 backdrop-blur-sm p-8 rounded-lg shadow-xl relative z-0 text-left">
+        <div className="prose prose-lg max-w-2xl mx-auto bg-white/80 backdrop-blur-sm p-8 rounded-lg shadow-xl relative z-0 text-left">
           <h2 className="text-3xl font-bold mb-6 text-purple-900">What is ArtCoin?</h2>
           <p className="text-lg mb-6">
             ArtCoin is the world's first aesthetic prediction market, where art criticism meets crypto absurdity.
