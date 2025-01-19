@@ -1,52 +1,13 @@
 import { ConnectWalletButton } from "@/components/ConnectWalletButton";
 import { ArtDisplay } from "@/components/ArtDisplay";
 import { Statistics } from "@/components/Statistics";
-import { useIsMobile } from "@/hooks/use-mobile";
-import { Link } from "react-router-dom";
+import { Navigation } from "@/components/Navigation";
 
 const Index = () => {
-  const isMobile = useIsMobile();
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-artcoin-yellow via-artcoin-pink to-artcoin-blue">
       <div className="container mx-auto px-4 py-8 text-center">
-        {!isMobile ? (
-          <div className="mb-8">
-            <div className="text-2xl mb-4 text-purple-900">
-              🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨
-            </div>
-            <div className="text-2xl font-bold mb-4 text-purple-900">
-              🎨 <Link to="/" className="hover:opacity-75">HOME</Link> 💩 <Link to="/manifesto" className="hover:opacity-75">MANIFESTO</Link> 🎨 <Link to="/leaderboard" className="hover:opacity-75">LEADERBOARD</Link> 🎨
-            </div>
-            <div className="text-2xl mb-8 text-purple-900">
-              🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨
-            </div>
-          </div>
-        ) : (
-          <div className="mb-8">
-            <div className="text-2xl mb-4 text-purple-900">
-              🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
-            </div>
-            <div className="text-2xl font-bold mb-4 text-purple-900">
-              🎨 <Link to="/" className="hover:opacity-75">HOME</Link> 🎨
-            </div>
-            <div className="text-2xl mb-4 text-purple-900">
-              🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
-            </div>
-            <div className="text-2xl font-bold mb-4 text-purple-900">
-              🎨 <Link to="/manifesto" className="hover:opacity-75">MANIFESTO</Link> 🎨
-            </div>
-            <div className="text-2xl mb-4 text-purple-900">
-              🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
-            </div>
-            <div className="text-2xl font-bold mb-4 text-purple-900">
-              🎨 <Link to="/leaderboard" className="hover:opacity-75">LEADERBOARD</Link> 🎨
-            </div>
-            <div className="text-2xl mb-8 text-purple-900">
-              🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
-            </div>
-          </div>
-        )}
+        <Navigation />
 
         <div className="mb-2 space-y-1">
           <div className="flex justify-center gap-2 text-3xl">

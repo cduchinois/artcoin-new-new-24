@@ -8,8 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useIsMobile } from "@/hooks/use-mobile";
-import { Link } from "react-router-dom";
+import { Navigation } from "@/components/Navigation";
 
 const MOCK_USERS = [
   {
@@ -118,48 +117,10 @@ const getRankEmoji = (rank: number) => {
 };
 
 const Leaderboard = () => {
-  const isMobile = useIsMobile();
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-artcoin-yellow via-artcoin-pink to-artcoin-blue">
       <div className="container mx-auto px-4 py-8 text-center">
-        {!isMobile ? (
-          <div className="mb-8">
-            <div className="text-2xl mb-4 text-purple-900">
-              🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨
-            </div>
-            <div className="text-2xl font-bold mb-4 text-purple-900">
-              🎨 <Link to="/" className="hover:opacity-75">HOME</Link> 💩 <Link to="/manifesto" className="hover:opacity-75">MANIFESTO</Link> 🏆 LEADERBOARD 🎨
-            </div>
-            <div className="text-2xl mb-8 text-purple-900">
-              🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨
-            </div>
-          </div>
-        ) : (
-          <div className="mb-8">
-            <div className="text-2xl mb-4 text-purple-900">
-              🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
-            </div>
-            <div className="text-2xl font-bold mb-4 text-purple-900">
-              🎨 <Link to="/" className="hover:opacity-75">HOME</Link> 🎨
-            </div>
-            <div className="text-2xl mb-4 text-purple-900">
-              🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
-            </div>
-            <div className="text-2xl font-bold mb-4 text-purple-900">
-              🎨 <Link to="/manifesto" className="hover:opacity-75">MANIFESTO</Link> 🎨
-            </div>
-            <div className="text-2xl mb-4 text-purple-900">
-              🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
-            </div>
-            <div className="text-2xl font-bold mb-4 text-purple-900">
-              🎨 LEADERBOARD 🎨
-            </div>
-            <div className="text-2xl mb-8 text-purple-900">
-              🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
-            </div>
-          </div>
-        )}
+        <Navigation />
 
         <div className="max-w-4xl mx-auto bg-white/80 backdrop-blur-sm rounded-lg shadow-xl p-6">
           <div className="flex items-center justify-center gap-2 mb-6">
