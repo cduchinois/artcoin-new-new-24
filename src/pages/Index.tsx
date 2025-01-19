@@ -9,7 +9,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-artcoin-yellow via-artcoin-pink to-artcoin-blue">
-      <div className="container mx-auto px-4 py-8 text-center">
+      <div className="container mx-auto px-4 py-8">
         {!isMobile ? (
           <div className="mb-8">
             <div className="text-2xl mb-4 text-purple-900">
