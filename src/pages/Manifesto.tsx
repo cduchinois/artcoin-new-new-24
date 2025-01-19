@@ -1,6 +1,4 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { Link } from "react-router-dom";
-import { useIsMobile } from "@/hooks/use-mobile";
 import { Navigation } from "@/components/Navigation";
 
 interface Emoji {
@@ -16,16 +14,15 @@ interface Emoji {
 const Manifesto = () => {
   const [emojis, setEmojis] = useState<Emoji[]>([]);
   const emojisText = ["🎨", "💩", "🚽"];
-  const isMobile = useIsMobile();
 
   const createEmoji = useCallback((windowWidth: number, windowHeight: number): Emoji => {
-    const speedMultiplier = Math.random() > 0.5 ? 1 : 2; // 50% chance of being faster
+    const speedMultiplier = Math.random() > 0.5 ? 1 : 2;
     return {
       id: Math.random(),
       x: Math.random() * windowWidth,
       y: Math.random() * windowHeight,
       text: emojisText[Math.floor(Math.random() * emojisText.length)],
-      size: Math.random() * (30 - 18) + 18, // Random size between 18 and 30
+      size: Math.random() * (30 - 18) + 18,
       xSpeed: (Math.random() - 0.5) * 4 * speedMultiplier,
       ySpeed: (Math.random() - 0.5) * 4 * speedMultiplier
     };
@@ -96,43 +93,9 @@ const Manifesto = () => {
       </div>
 
       <div className="container mx-auto px-4 text-center pb-12">
-        {!isMobile ? (
-          <div className="mb-8 pt-8">
-            <div className="text-2xl mb-4 text-purple-900">
-              🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨
-            </div>
-            <div className="text-2xl font-bold mb-4 text-purple-900">
-              🎨 <Link to="/" className="hover:opacity-75">HOME</Link> 💩 <Link to="/manifesto" className="hover:opacity-75">MANIFESTO</Link> 🎨 <Link to="/leaderboard" className="hover:opacity-75">LEADERBOARD</Link> 🎨
-            </div>
-            <div className="text-2xl mb-8 text-purple-900">
-              🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨
-            </div>
-          </div>
-        ) : (
-          <div className="mb-8 pt-8">
-            <div className="text-2xl mb-4 text-purple-900">
-              🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
-            </div>
-            <div className="text-2xl font-bold mb-4 text-purple-900">
-              🎨 <Link to="/" className="hover:opacity-75">HOME</Link> 🎨
-            </div>
-            <div className="text-2xl mb-4 text-purple-900">
-              🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
-            </div>
-            <div className="text-2xl font-bold mb-4 text-purple-900">
-              🎨 <Link to="/manifesto" className="hover:opacity-75">MANIFESTO</Link> 🎨
-            </div>
-            <div className="text-2xl mb-4 text-purple-900">
-              🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
-            </div>
-            <div className="text-2xl font-bold mb-4 text-purple-900">
-              🎨 <Link to="/leaderboard" className="hover:opacity-75">LEADERBOARD</Link> 🎨
-            </div>
-            <div className="text-2xl mb-8 text-purple-900">
-              🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
-            </div>
-          </div>
-        )}
+        <div className="pt-8">
+          <Navigation />
+        </div>
 
         <div className="prose prose-lg max-w-2xl mx-auto bg-white/80 backdrop-blur-sm p-8 rounded-lg shadow-xl relative z-0 text-left">
           <h2 className="text-3xl font-bold mb-6 text-purple-900">What is ArtCoin?</h2>
