@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { WagmiProvider } from 'wagmi'
 import { config } from './lib/web3Config'
 import Index from "./pages/Index";
+import Manifesto from "./pages/Manifesto";
 
 const queryClient = new QueryClient();
 
@@ -18,6 +19,7 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/manifesto" element={<Manifesto />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
