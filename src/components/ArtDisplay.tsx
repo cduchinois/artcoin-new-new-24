@@ -13,6 +13,8 @@ export const ArtDisplay = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [swipeDirection, setSwipeDirection] = useState<'left' | 'right' | null>(null);
+  const [dragPosition, setDragPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
   const { toast } = useToast();
 
   const handleVote = (isGood: boolean) => {
@@ -24,17 +26,67 @@ export const ArtDisplay = () => {
       description: "Your vote has been recorded!",
     });
 
-    // Reset animation and update image after animation
     setTimeout(() => {
       setCurrentImageIndex((prev) => (prev + 1) % placeholderImages.length);
       setIsAnimating(false);
       setSwipeDirection(null);
+      setDragPosition({ x: 0, y: 0 });
     }, 300);
+  };
+
+  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
+    setIsDragging(true);
+    // Prevent default touch behavior
+    if (e.type === 'touchstart') {
+      e.preventDefault();
+    }
+  };
+
+  const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!isDragging) return;
+
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+    
+    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+    const x = clientX - rect.left - rect.width / 2;
+    const y = clientY - rect.top - rect.height / 2;
+
+    setDragPosition({ x, y });
+
+    // Calculate rotation based on drag position
+    const rotate = x * 0.1; // Adjust rotation sensitivity
+
+    (e.currentTarget as HTMLElement).style.transform = 
+      `translate(${x}px, ${y}px) rotate(${rotate}deg)`;
+  };
+
+  const handleDragEnd = (e: React.MouseEvent | React.TouchEvent) => {
+    setIsDragging(false);
+    const threshold = 100; // Minimum distance to trigger swipe
+
+    if (Math.abs(dragPosition.x) > threshold) {
+      handleVote(dragPosition.x > 0);
+    } else {
+      // Reset position if not swiped far enough
+      setDragPosition({ x: 0, y: 0 });
+      (e.currentTarget as HTMLElement).style.transform = 
+        'translate(0px, 0px) rotate(0deg)';
+    }
   };
 
   return (
     <div className="w-full max-w-2xl mx-auto p-6">
-      <div className="relative aspect-square rounded-3xl overflow-hidden border-4 border-artcoin-purple bg-white shadow-xl">
+      <div 
+        className="relative aspect-square rounded-3xl overflow-hidden border-4 border-artcoin-purple bg-white shadow-xl cursor-grab active:cursor-grabbing"
+        onMouseDown={handleDragStart}
+        onMouseMove={handleDragMove}
+        onMouseUp={handleDragEnd}
+        onMouseLeave={handleDragEnd}
+        onTouchStart={handleDragStart}
+        onTouchMove={handleDragMove}
+        onTouchEnd={handleDragEnd}
+      >
         <img
           src={placeholderImages[currentImageIndex]}
           alt="Artwork"
@@ -45,6 +97,7 @@ export const ArtDisplay = () => {
                 : '-translate-x-full -rotate-12 scale-95'
               : 'translate-x-0 rotate-0 scale-100'
           }`}
+          draggable="false"
         />
       </div>
       
