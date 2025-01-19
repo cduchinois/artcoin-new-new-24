@@ -11,17 +11,25 @@ const placeholderImages = [
 
 export const ArtDisplay = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [swipeDirection, setSwipeDirection] = useState<'left' | 'right' | null>(null);
   const { toast } = useToast();
 
   const handleVote = (isGood: boolean) => {
+    setIsAnimating(true);
+    setSwipeDirection(isGood ? 'right' : 'left');
+    
     toast({
       title: isGood ? "Great Art! 🎨" : "Bad Art! 💩",
       description: "Your vote has been recorded!",
     });
-    
-    setCurrentImageIndex((prev) => 
-      (prev + 1) % placeholderImages.length
-    );
+
+    // Reset animation and update image after animation
+    setTimeout(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % placeholderImages.length);
+      setIsAnimating(false);
+      setSwipeDirection(null);
+    }, 300);
   };
 
   return (
@@ -30,7 +38,13 @@ export const ArtDisplay = () => {
         <img
           src={placeholderImages[currentImageIndex]}
           alt="Artwork"
-          className="w-full h-full object-cover"
+          className={`w-full h-full object-cover transition-transform duration-300 ${
+            isAnimating
+              ? swipeDirection === 'right'
+                ? 'translate-x-full'
+                : '-translate-x-full'
+              : 'translate-x-0'
+          }`}
         />
       </div>
       
