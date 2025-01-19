@@ -13,8 +13,8 @@ export const ArtDisplay = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [swipeDirection, setSwipeDirection] = useState<'left' | 'right' | null>(null);
-  const [dragPosition, setDragPosition] = useState({ x: 0, y: 0 });
-  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [offsetX, setOffsetX] = useState(0);
   const { toast } = useToast();
 
   const handleVote = (isGood: boolean) => {
@@ -30,73 +30,57 @@ export const ArtDisplay = () => {
       setCurrentImageIndex((prev) => (prev + 1) % placeholderImages.length);
       setIsAnimating(false);
       setSwipeDirection(null);
-      setDragPosition({ x: 0, y: 0 });
+      setOffsetX(0);
     }, 300);
   };
 
-  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
-    setIsDragging(true);
-    // Prevent default touch behavior
-    if (e.type === 'touchstart') {
-      e.preventDefault();
-    }
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setStartX(e.touches[0].clientX);
   };
 
-  const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
-    if (!isDragging) return;
-
-    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
-    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
-    
-    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
-    const x = clientX - rect.left - rect.width / 2;
-    const y = clientY - rect.top - rect.height / 2;
-
-    setDragPosition({ x, y });
-
-    // Calculate rotation based on drag position
-    const rotate = x * 0.1; // Adjust rotation sensitivity
-
-    (e.currentTarget as HTMLElement).style.transform = 
-      `translate(${x}px, ${y}px) rotate(${rotate}deg)`;
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (isAnimating) return;
+    const currentX = e.touches[0].clientX;
+    const diff = currentX - startX;
+    setOffsetX(diff);
   };
 
-  const handleDragEnd = (e: React.MouseEvent | React.TouchEvent) => {
-    setIsDragging(false);
-    const threshold = 100; // Minimum distance to trigger swipe
-
-    if (Math.abs(dragPosition.x) > threshold) {
-      handleVote(dragPosition.x > 0);
+  const handleTouchEnd = () => {
+    const threshold = 100;
+    if (Math.abs(offsetX) > threshold) {
+      handleVote(offsetX > 0);
     } else {
-      // Reset position if not swiped far enough
-      setDragPosition({ x: 0, y: 0 });
-      (e.currentTarget as HTMLElement).style.transform = 
-        'translate(0px, 0px) rotate(0deg)';
+      setOffsetX(0);
     }
+  };
+
+  const getCardStyle = () => {
+    if (isAnimating) {
+      return swipeDirection === 'right'
+        ? 'translate-x-full rotate-12 scale-95'
+        : '-translate-x-full -rotate-12 scale-95';
+    }
+    
+    if (offsetX !== 0) {
+      const rotate = (offsetX / window.innerWidth) * 45; // Max rotation of 45 degrees
+      return `transform translate-x-[${offsetX}px] rotate-[${rotate}deg]`;
+    }
+    
+    return 'translate-x-0 rotate-0 scale-100';
   };
 
   return (
     <div className="w-full max-w-2xl mx-auto p-6">
       <div 
-        className="relative aspect-square rounded-3xl overflow-hidden border-4 border-artcoin-purple bg-white shadow-xl cursor-grab active:cursor-grabbing"
-        onMouseDown={handleDragStart}
-        onMouseMove={handleDragMove}
-        onMouseUp={handleDragEnd}
-        onMouseLeave={handleDragEnd}
-        onTouchStart={handleDragStart}
-        onTouchMove={handleDragMove}
-        onTouchEnd={handleDragEnd}
+        className="relative aspect-square rounded-3xl overflow-hidden border-4 border-artcoin-purple bg-white shadow-xl touch-none"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
         <img
           src={placeholderImages[currentImageIndex]}
           alt="Artwork"
-          className={`w-full h-full object-cover transition-all duration-300 ${
-            isAnimating
-              ? swipeDirection === 'right'
-                ? 'translate-x-full rotate-12 scale-95'
-                : '-translate-x-full -rotate-12 scale-95'
-              : 'translate-x-0 rotate-0 scale-100'
-          }`}
+          className={`w-full h-full object-cover transition-all duration-300 ${getCardStyle()}`}
           draggable="false"
         />
       </div>
