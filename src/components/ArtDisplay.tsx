@@ -4,9 +4,16 @@ import { useToast } from "@/hooks/use-toast";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 
 const placeholderImages = [
-  "https://images.unsplash.com/photo-1649972904349-6e44c42644a7",
-  "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b",
-  "https://images.unsplash.com/photo-1518770660439-4636190af475",
+  "/lovable-uploads/e7c9d1f9-6b61-49a8-b375-97e67191a6f3.png",
+  "/lovable-uploads/f1931887-eaf2-445f-92c4-b5165e4d365b.png",
+  "/lovable-uploads/ad87c205-7cdd-4da0-9b55-d55e48fb2fec.png",
+  "/lovable-uploads/0a8bbc92-eb17-4ee4-9fe6-3fecfda84ff5.png",
+  "/lovable-uploads/2dc9e872-89c2-490f-b254-388d8d780461.png",
+  "/lovable-uploads/b0f3f7e3-d226-4a6a-bd9b-fde29e7d89b3.png",
+  "/lovable-uploads/ee377a21-0a1f-4cf7-9e6c-f80ebdb7c30c.png",
+  "/lovable-uploads/f12d21e6-14cb-462a-aaa0-41c90f13df32.png",
+  "/lovable-uploads/d8d82c86-a2e2-4d21-be64-7f5efc3a2be3.png",
+  "/lovable-uploads/b597c233-0e4d-48f1-b6b0-ad54cb43b42a.png",
 ];
 
 const funnyResponses = {

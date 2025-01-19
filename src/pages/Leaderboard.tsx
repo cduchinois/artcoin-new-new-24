@@ -14,7 +14,7 @@ const MOCK_USERS = [
   {
     rank: 1,
     username: "ArtWhisperer",
-    pfp: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7",
+    pfp: "/lovable-uploads/e7c9d1f9-6b61-49a8-b375-97e67191a6f3.png",
     address: "0x1234...5678",
     votes: 150,
     artcoin: 2500,
@@ -23,7 +23,7 @@ const MOCK_USERS = [
   {
     rank: 2,
     username: "CryptoCreative",
-    pfp: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
+    pfp: "/lovable-uploads/f1931887-eaf2-445f-92c4-b5165e4d365b.png",
     address: "0x8765...4321",
     votes: 120,
     artcoin: 2000,
@@ -32,7 +32,7 @@ const MOCK_USERS = [
   {
     rank: 3,
     username: "PixelPioneer",
-    pfp: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158",
+    pfp: "/lovable-uploads/ad87c205-7cdd-4da0-9b55-d55e48fb2fec.png",
     address: "0x9876...1234",
     votes: 100,
     artcoin: 1800,
@@ -41,7 +41,7 @@ const MOCK_USERS = [
   {
     rank: 4,
     username: "ArtisticAlpha",
-    pfp: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
+    pfp: "/lovable-uploads/0a8bbc92-eb17-4ee4-9fe6-3fecfda84ff5.png",
     address: "0x5432...8765",
     votes: 80,
     artcoin: 1500,
@@ -50,7 +50,7 @@ const MOCK_USERS = [
   {
     rank: 5,
     username: "NFTNinja",
-    pfp: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
+    pfp: "/lovable-uploads/2dc9e872-89c2-490f-b254-388d8d780461.png",
     address: "0x1111...2222",
     votes: 75,
     artcoin: 1400,
@@ -59,7 +59,7 @@ const MOCK_USERS = [
   {
     rank: 6,
     username: "BlockchainBard",
-    pfp: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
+    pfp: "/lovable-uploads/b0f3f7e3-d226-4a6a-bd9b-fde29e7d89b3.png",
     address: "0x3333...4444",
     votes: 70,
     artcoin: 1300,
@@ -68,7 +68,7 @@ const MOCK_USERS = [
   {
     rank: 7,
     username: "TokenTitan",
-    pfp: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
+    pfp: "/lovable-uploads/ee377a21-0a1f-4cf7-9e6c-f80ebdb7c30c.png",
     address: "0x5555...6666",
     votes: 65,
     artcoin: 1200,
@@ -77,7 +77,7 @@ const MOCK_USERS = [
   {
     rank: 8,
     username: "CryptoKing",
-    pfp: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
+    pfp: "/lovable-uploads/f12d21e6-14cb-462a-aaa0-41c90f13df32.png",
     address: "0x7777...8888",
     votes: 60,
     artcoin: 1100,
@@ -86,7 +86,7 @@ const MOCK_USERS = [
   {
     rank: 9,
     username: "MetaMaster",
-    pfp: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
+    pfp: "/lovable-uploads/d8d82c86-a2e2-4d21-be64-7f5efc3a2be3.png",
     address: "0x9999...0000",
     votes: 55,
     artcoin: 1000,
@@ -95,7 +95,7 @@ const MOCK_USERS = [
   {
     rank: 10,
     username: "WebWizard",
-    pfp: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
+    pfp: "/lovable-uploads/b597c233-0e4d-48f1-b6b0-ad54cb43b42a.png",
     address: "0xAAAA...BBBB",
     votes: 50,
     artcoin: 900,
