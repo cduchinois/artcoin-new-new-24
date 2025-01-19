@@ -7,7 +7,7 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-br from-artcoin-yellow via-artcoin-pink to-artcoin-blue">
       <div className="container mx-auto px-4 py-8 text-center">
         <div className="mb-8 space-y-4">
-          <div className="flex justify-center gap-2 text-4xl font-bold text-purple-900">
+          <div className="flex justify-center gap-2 text-4xl">
             🎨 💩 🎨 💩 🎨
           </div>
           <h1 className="text-5xl font-bold text-purple-900">ArtCoin</h1>
@@ -26,7 +26,7 @@ const Index = () => {
 
         <footer className="mt-12 text-purple-700 space-y-2">
           <p>© 2025 ArtCoin - Making Web3 Weird Again ✨</p>
-          <div className="flex justify-center gap-2 text-2xl font-bold text-purple-900">
+          <div className="flex justify-center gap-2 text-2xl">
             🎨 💩 🎨 💩 🎨
           </div>
         </footer>
