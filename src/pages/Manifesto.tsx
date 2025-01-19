@@ -94,9 +94,9 @@ const Manifesto = () => {
         ))}
       </div>
       
-      <div className="container mx-auto px-4 py-16 relative">
+      <div className="container mx-auto px-4 text-center">
         {!isMobile ? (
-          <div className="mb-8">
+          <div className="mb-8 pt-8">
             <div className="text-2xl mb-4 text-purple-900">
               🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨
             </div>
@@ -108,7 +108,7 @@ const Manifesto = () => {
             </div>
           </div>
         ) : (
-          <div className="mb-8">
+          <div className="mb-8 pt-8">
             <div className="text-2xl mb-4 text-purple-900">
               🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
             </div>
