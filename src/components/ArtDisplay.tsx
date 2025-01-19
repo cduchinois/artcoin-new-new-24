@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Heart, ThumbsDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { useAccount } from 'wagmi';
 
 const placeholderImages = [
   "https://images.unsplash.com/photo-1649972904349-6e44c42644a7",
@@ -13,12 +12,6 @@ const placeholderImages = [
 export const ArtDisplay = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { toast } = useToast();
-  const { address } = useAccount();
-
-  // Reset the interface when wallet address changes
-  useEffect(() => {
-    setCurrentImageIndex(0);
-  }, [address]);
 
   const handleVote = (isGood: boolean) => {
     toast({
