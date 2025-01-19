@@ -1,6 +1,11 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 
 interface Emoji {
   id: number;
@@ -75,6 +80,22 @@ const Manifesto = () => {
     return () => clearInterval(animationFrame);
   }, []);
 
+  const MenuContent = () => (
+    <>
+      <div className="text-2xl mb-4 text-purple-900">
+        🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨
+      </div>
+      <div className="text-2xl font-bold mb-4 text-purple-900 flex flex-row items-center justify-center gap-4">
+        🎨 <Link to="/" className="hover:opacity-75">HOME</Link> 🎨
+        <Link to="/manifesto" className="hover:opacity-75">MANIFESTO</Link> 🎨
+        <Link to="/leaderboard" className="hover:opacity-75">LEADERBOARD</Link> 🎨
+      </div>
+      <div className="text-2xl mb-8 text-purple-900">
+        🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨
+      </div>
+    </>
+  );
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-artcoin-yellow via-artcoin-pink to-artcoin-blue relative">
       <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 50 }}>
@@ -110,25 +131,18 @@ const Manifesto = () => {
         ) : (
           <div className="mb-8 pt-8">
             <div className="text-2xl mb-4 text-purple-900">
-              🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
+              🎨 💩 🎨 💩 🎨
             </div>
-            <div className="text-2xl font-bold mb-4 text-purple-900">
-              🎨 <Link to="/" className="hover:opacity-75">HOME</Link> 🎨
-            </div>
-            <div className="text-2xl mb-4 text-purple-900">
-              🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
-            </div>
-            <div className="text-2xl font-bold mb-4 text-purple-900">
-              🎨 <Link to="/manifesto" className="hover:opacity-75">MANIFESTO</Link> 🎨
-            </div>
-            <div className="text-2xl mb-4 text-purple-900">
-              🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
-            </div>
-            <div className="text-2xl font-bold mb-4 text-purple-900">
-              🎨 <Link to="/leaderboard" className="hover:opacity-75">LEADERBOARD</Link> 🎨
-            </div>
+            <Drawer>
+              <DrawerTrigger className="text-2xl font-bold mb-4 text-purple-900">
+                🎨 MENU 🎨
+              </DrawerTrigger>
+              <DrawerContent className="p-6">
+                <MenuContent />
+              </DrawerContent>
+            </Drawer>
             <div className="text-2xl mb-8 text-purple-900">
-              🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
+              🎨 💩 🎨 💩 🎨
             </div>
           </div>
         )}
