@@ -21,7 +21,7 @@ const Manifesto = () => {
       x: Math.random() * windowWidth,
       y: Math.random() * windowHeight,
       text: emojisText[Math.floor(Math.random() * emojisText.length)],
-      size: Math.random() * (30 - 18) + 18,
+      size: Math.random() * (30 - 18) + 18, // Random size between 18 and 30
       xSpeed: (Math.random() - 0.5) * 4 * speedMultiplier,
       ySpeed: (Math.random() - 0.5) * 4 * speedMultiplier
     };
@@ -74,7 +74,7 @@ const Manifesto = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-artcoin-yellow via-artcoin-pink to-artcoin-blue relative">
-      <div className="fixed inset-0 pointer-events-none">
+      <div className="fixed inset-0 pointer-events-none" style={{ zIndex: 50 }}>
         {emojis.map(emoji => (
           <div
             key={emoji.id}
@@ -84,7 +84,6 @@ const Manifesto = () => {
               top: `${emoji.y}px`,
               fontSize: `${emoji.size}px`,
               transform: 'translate(-50%, -50%)',
-              zIndex: 10,
             }}
           >
             {emoji.text}
