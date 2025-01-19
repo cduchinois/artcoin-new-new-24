@@ -222,6 +222,13 @@ const Manifesto = () => {
             PS: If you've read this far, you're probably eligible for our unfair airdrop. Or not. We'll judge that too.
           </p>
         </div>
+
+        <footer className="mt-12 text-purple-700 space-y-2">
+          <p>© 2025 ArtCoin - Making Web3 Weird Again ✨</p>
+          <div className="flex justify-center gap-2 text-2xl">
+            🎨 💩 🎨 💩 🎨
+          </div>
+        </footer>
       </div>
     </div>
   );
