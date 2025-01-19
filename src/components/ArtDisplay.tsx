@@ -38,12 +38,12 @@ export const ArtDisplay = () => {
         <img
           src={placeholderImages[currentImageIndex]}
           alt="Artwork"
-          className={`w-full h-full object-cover transition-transform duration-300 ${
+          className={`w-full h-full object-cover transition-all duration-300 ${
             isAnimating
               ? swipeDirection === 'right'
-                ? 'translate-x-full'
-                : '-translate-x-full'
-              : 'translate-x-0'
+                ? 'translate-x-full rotate-12 scale-95'
+                : '-translate-x-full -rotate-12 scale-95'
+              : 'translate-x-0 rotate-0 scale-100'
           }`}
         />
       </div>
