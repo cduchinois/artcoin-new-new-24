@@ -6,6 +6,18 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-artcoin-yellow via-artcoin-pink to-artcoin-blue">
       <div className="container mx-auto px-4 py-8 text-center">
+        <div className="mb-8">
+          <div className="text-2xl mb-4">
+            🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨
+          </div>
+          <div className="text-2xl font-bold mb-4">
+            🎨 HOME 💩 MANIFESTO 🏆 LEADERBOARD 🎨
+          </div>
+          <div className="text-2xl mb-8">
+            🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨
+          </div>
+        </div>
+
         <div className="mb-8 space-y-4">
           <div className="flex justify-center gap-2 text-4xl">
             🎨 💩 🎨 💩 🎨
