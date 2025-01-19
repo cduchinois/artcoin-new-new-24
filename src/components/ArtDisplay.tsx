@@ -11,81 +11,26 @@ const placeholderImages = [
 
 export const ArtDisplay = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [swipeDirection, setSwipeDirection] = useState<'left' | 'right' | null>(null);
-  const [startX, setStartX] = useState(0);
-  const [offsetX, setOffsetX] = useState(0);
   const { toast } = useToast();
 
   const handleVote = (isGood: boolean) => {
-    setIsAnimating(true);
-    setSwipeDirection(isGood ? 'right' : 'left');
-    
     toast({
       title: isGood ? "Great Art! 🎨" : "Bad Art! 💩",
       description: "Your vote has been recorded!",
     });
-
-    setTimeout(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % placeholderImages.length);
-      setIsAnimating(false);
-      setSwipeDirection(null);
-      setOffsetX(0);
-    }, 300);
-  };
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setStartX(e.touches[0].clientX);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (isAnimating) return;
-    const currentX = e.touches[0].clientX;
-    const diff = currentX - startX;
-    const threshold = window.innerWidth * 0.4;
     
-    // Limit the drag distance
-    if (Math.abs(diff) <= threshold) {
-      setOffsetX(diff);
-    }
-  };
-
-  const handleTouchEnd = () => {
-    const threshold = window.innerWidth * 0.3; // 30% of screen width for swipe threshold
-    if (Math.abs(offsetX) > threshold) {
-      handleVote(offsetX > 0);
-    } else {
-      setOffsetX(0); // Reset to center if threshold not reached
-    }
-  };
-
-  const getCardStyle = () => {
-    if (isAnimating) {
-      return swipeDirection === 'right'
-        ? 'translate-x-full'
-        : '-translate-x-full';
-    }
-    
-    if (offsetX !== 0) {
-      return `transform translate-x-[${offsetX}px]`;
-    }
-    
-    return 'translate-x-0';
+    setCurrentImageIndex((prev) => 
+      (prev + 1) % placeholderImages.length
+    );
   };
 
   return (
     <div className="w-full max-w-2xl mx-auto p-6">
-      <div 
-        className="relative aspect-square rounded-3xl overflow-hidden border-4 border-artcoin-purple bg-white shadow-xl touch-none"
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-      >
+      <div className="relative aspect-square rounded-3xl overflow-hidden border-4 border-artcoin-purple bg-white shadow-xl">
         <img
           src={placeholderImages[currentImageIndex]}
           alt="Artwork"
-          className={`w-full h-full object-cover transition-transform duration-300 ease-out ${getCardStyle()}`}
-          draggable="false"
+          className="w-full h-full object-cover"
         />
       </div>
       
