@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Heart, ThumbsDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
@@ -35,24 +34,22 @@ export const ArtDisplay = () => {
       </div>
       
       <h2 className="text-2xl font-bold text-purple-800 mt-6 mb-4">
-        💖 Is this ART or is this FART? 💨
+        🎨 Good Art or 💩 Bad Art?
       </h2>
       
       <div className="flex justify-center gap-4">
         <Button
           onClick={() => handleVote(true)}
-          className="bg-green-200 hover:bg-green-300 text-green-800 px-8 py-6 rounded-full text-lg font-bold transition-all hover:scale-105"
+          className="text-4xl bg-transparent hover:bg-green-100/20 px-8 py-6 rounded-full transition-all hover:scale-105"
         >
-          <Heart className="mr-2" />
-          GREAT ART! ✨
+          🎨
         </Button>
         
         <Button
           onClick={() => handleVote(false)}
-          className="bg-pink-200 hover:bg-pink-300 text-pink-800 px-8 py-6 rounded-full text-lg font-bold transition-all hover:scale-105"
+          className="text-4xl bg-transparent hover:bg-pink-100/20 px-8 py-6 rounded-full transition-all hover:scale-105"
         >
-          <ThumbsDown className="mr-2" />
-          BAD ART! 🤮
+          💩
         </Button>
       </div>
     </div>
