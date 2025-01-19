@@ -25,7 +25,9 @@ export const ConnectWalletButton = () => {
   })
   const { disconnect } = useDisconnect()
 
-  if (isConnected) {
+  const mainConnector = connectors[0] // Get MetaMask connector
+
+  if (isConnected && address) {
     return (
       <Button
         onClick={() => disconnect()}
@@ -34,26 +36,21 @@ export const ConnectWalletButton = () => {
                   text-purple-900 font-bold rounded-full px-8 py-6"
       >
         <Wallet className="mr-2 h-5 w-5" />
-        {`${address?.slice(0, 6)}...${address?.slice(-4)}`}
+        {`${address.slice(0, 6)}...${address.slice(-4)}`}
       </Button>
     )
   }
 
   return (
-    <>
-      {connectors.map((connector) => (
-        <Button
-          disabled={!connector.ready}
-          key={connector.uid}
-          onClick={() => connect({ connector })}
-          className="bg-gradient-to-r from-artcoin-yellow via-artcoin-pink to-artcoin-blue 
-                    hover:opacity-90 transition-opacity animate-shimmer bg-[length:200%_100%]
-                    text-purple-900 font-bold rounded-full px-8 py-6"
-        >
-          <Wallet className="mr-2 h-5 w-5" />
-          {connector.name === 'Injected' ? '🌈 Connect MetaMask 🌈' : '🌈 Connect Coinbase Wallet 🌈'}
-        </Button>
-      ))}
-    </>
+    <Button
+      disabled={!mainConnector.ready}
+      onClick={() => connect({ connector: mainConnector })}
+      className="bg-gradient-to-r from-artcoin-yellow via-artcoin-pink to-artcoin-blue 
+                hover:opacity-90 transition-opacity animate-shimmer bg-[length:200%_100%]
+                text-purple-900 font-bold rounded-full px-8 py-6"
+    >
+      <Wallet className="mr-2 h-5 w-5" />
+      🌈 Connect Wallet 🌈
+    </Button>
   );
 };
