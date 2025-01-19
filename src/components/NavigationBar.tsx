@@ -12,7 +12,7 @@ import {
 
 export const NavigationBar = () => {
   return (
-    <div className="w-full bg-gradient-to-br from-artcoin-yellow via-artcoin-pink to-artcoin-blue backdrop-blur-sm border-b border-purple-200 fixed top-0 z-50">
+    <div className="w-full border-b border-purple-200 fixed top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center py-2">
           <div className="text-2xl font-bold text-purple-900">
