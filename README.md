@@ -2,7 +2,7 @@
 
 ArtCoin is where art criticism meets crypto absurdity - a revolutionary platform where users can vote on artwork's merit using $ARTCOIN tokens. It's a decentralized ecosystem combining aesthetic judgment with crypto mechanics, allowing users to submit artwork, participate in daily voting sessions, and earn rewards for predicting community taste. With features like unfair airdrops based on NFT collection taste and an AI art critic, ArtCoin aims to make Web3 weird again.
 
-## Getting Started
+## Getting Started - frontend
 
 1. Install Node Version Manager (nvm):
 ```sh
@@ -14,6 +14,7 @@ Restart your terminal after installation.
 ```sh
 git clone https://github.com/yourusername/artcoin.git
 cd artcoin
+cd frontend
 ```
 
 3. Install dependencies:
