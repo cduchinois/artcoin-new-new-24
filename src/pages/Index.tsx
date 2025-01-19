@@ -3,30 +3,9 @@ import { ArtDisplay } from "@/components/ArtDisplay";
 import { Statistics } from "@/components/Statistics";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Link } from "react-router-dom";
-import {
-  Drawer,
-  DrawerContent,
-  DrawerTrigger,
-} from "@/components/ui/drawer";
 
 const Index = () => {
   const isMobile = useIsMobile();
-
-  const MenuContent = () => (
-    <>
-      <div className="text-2xl mb-4 text-purple-900">
-        🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨
-      </div>
-      <div className="text-2xl font-bold mb-4 text-purple-900 flex flex-col gap-4">
-        <Link to="/" className="hover:opacity-75">HOME</Link>
-        <Link to="/manifesto" className="hover:opacity-75">MANIFESTO</Link>
-        <Link to="/leaderboard" className="hover:opacity-75">LEADERBOARD</Link>
-      </div>
-      <div className="text-2xl mb-8 text-purple-900">
-        🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨
-      </div>
-    </>
-  );
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-artcoin-yellow via-artcoin-pink to-artcoin-blue">
@@ -46,18 +25,25 @@ const Index = () => {
         ) : (
           <div className="mb-8">
             <div className="text-2xl mb-4 text-purple-900">
-              🎨 💩 🎨 💩 🎨
+              🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
             </div>
-            <Drawer>
-              <DrawerTrigger className="text-2xl font-bold mb-4 text-purple-900">
-                🎨 MENU 🎨
-              </DrawerTrigger>
-              <DrawerContent className="p-6">
-                <MenuContent />
-              </DrawerContent>
-            </Drawer>
+            <div className="text-2xl font-bold mb-4 text-purple-900">
+              🎨 <Link to="/" className="hover:opacity-75">HOME</Link> 🎨
+            </div>
+            <div className="text-2xl mb-4 text-purple-900">
+              🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
+            </div>
+            <div className="text-2xl font-bold mb-4 text-purple-900">
+              🎨 <Link to="/manifesto" className="hover:opacity-75">MANIFESTO</Link> 🎨
+            </div>
+            <div className="text-2xl mb-4 text-purple-900">
+              🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
+            </div>
+            <div className="text-2xl font-bold mb-4 text-purple-900">
+              🎨 <Link to="/leaderboard" className="hover:opacity-75">LEADERBOARD</Link> 🎨
+            </div>
             <div className="text-2xl mb-8 text-purple-900">
-              🎨 💩 🎨 💩 🎨
+              🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
             </div>
           </div>
         )}
