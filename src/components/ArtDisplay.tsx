@@ -44,6 +44,17 @@ export const ArtDisplay = () => {
     setTotalVotes(prev => prev + 1);
     setTotalArtcoins(prev => prev + reward);
     
+    // Create hidden elements to track stats
+    const voteEl = document.createElement('div');
+    voteEl.setAttribute('data-vote', 'true');
+    voteEl.style.display = 'none';
+    document.body.appendChild(voteEl);
+
+    const rewardEl = document.createElement('div');
+    rewardEl.setAttribute('data-reward', reward.toString());
+    rewardEl.style.display = 'none';
+    document.body.appendChild(rewardEl);
+    
     toast({
       title: isGood ? "Great Art! 🎨" : "Bad Art! 💩",
       description: `${response} ${reward} $ARTCOIN! 🪙`,

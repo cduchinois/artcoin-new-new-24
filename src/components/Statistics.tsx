@@ -9,10 +9,10 @@ export const Statistics = () => {
   // Update stats every second
   useEffect(() => {
     const interval = setInterval(() => {
-      // Get the stats from localStorage or other state management
-      const votes = document.querySelectorAll('[data-artcoin-vote]').length;
-      const artcoins = Array.from(document.querySelectorAll('[data-artcoin-reward]'))
-        .reduce((sum, el) => sum + Number(el.getAttribute('data-artcoin-reward')), 0);
+      // Get the cumulative stats from data attributes
+      const votes = document.querySelectorAll('[data-vote]').length;
+      const artcoins = Array.from(document.querySelectorAll('[data-reward]'))
+        .reduce((sum, el) => sum + Number(el.getAttribute('data-reward')), 0);
       
       setStats({
         totalVotes: votes,
@@ -30,7 +30,7 @@ export const Statistics = () => {
       </h3>
       <div className="space-y-1 text-purple-700">
         <p>Total Votes: {stats.totalVotes} 🌍</p>
-        <p>Reward Pool: {stats.totalArtcoins} $ARTCOIN 💰</p>
+        <p>Reward: {stats.totalArtcoins} $ARTCOIN 💰</p>
       </div>
     </div>
   );
