@@ -48,17 +48,17 @@ const Index = () => {
           </div>
         )}
 
-        <div className="mb-4 space-y-2">
-          <div className="flex justify-center gap-2 text-4xl">
+        <div className="mb-2 space-y-1">
+          <div className="flex justify-center gap-2 text-3xl">
             🎨 💩 🎨 💩 🎨
           </div>
-          <h1 className="text-5xl font-bold text-purple-900">ArtCoin</h1>
-          <h2 className="text-3xl font-bold text-purple-800">ARTCOIN WILL FIX IT</h2>
-          <p className="text-lg text-purple-700 italic">
+          <h1 className="text-4xl font-bold text-purple-900">ArtCoin</h1>
+          <h2 className="text-2xl font-bold text-purple-800">ARTCOIN WILL FIX IT</h2>
+          <p className="text-base text-purple-700 italic">
             "You probably won't be eligible for the unfair airdrop due to your questionable taste,
             but you can farm some by testing your artistic judgment!"
           </p>
-          <div className="pt-2">
+          <div className="pt-1">
             <ConnectWalletButton />
           </div>
         </div>
