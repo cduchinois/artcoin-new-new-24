@@ -9,12 +9,21 @@ export const ConnectWalletButton = () => {
   const { connectAsync, connectors } = useConnect();
   const { disconnectAsync } = useDisconnect();
 
-  const mainConnector = connectors[0];
+  const metaMaskConnector = connectors.find((c) => c.name === 'MetaMask');
 
   const handleConnect = async () => {
+    if (!metaMaskConnector) {
+      toast({
+        title: "Connection Error",
+        description: "MetaMask connector not found. Please install MetaMask.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     try {
       const result = await connectAsync({
-        connector: mainConnector,
+        connector: metaMaskConnector,
       });
       
       if (result?.accounts[0]) {
