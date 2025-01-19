@@ -48,6 +48,60 @@ const MOCK_USERS = [
     artcoin: 1500,
     movement: "down",
   },
+  {
+    rank: 5,
+    username: "NFTNinja",
+    pfp: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
+    address: "0x1111...2222",
+    votes: 75,
+    artcoin: 1400,
+    movement: "up",
+  },
+  {
+    rank: 6,
+    username: "BlockchainBard",
+    pfp: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
+    address: "0x3333...4444",
+    votes: 70,
+    artcoin: 1300,
+    movement: "down",
+  },
+  {
+    rank: 7,
+    username: "TokenTitan",
+    pfp: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
+    address: "0x5555...6666",
+    votes: 65,
+    artcoin: 1200,
+    movement: "up",
+  },
+  {
+    rank: 8,
+    username: "CryptoKing",
+    pfp: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
+    address: "0x7777...8888",
+    votes: 60,
+    artcoin: 1100,
+    movement: "down",
+  },
+  {
+    rank: 9,
+    username: "MetaMaster",
+    pfp: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
+    address: "0x9999...0000",
+    votes: 55,
+    artcoin: 1000,
+    movement: "up",
+  },
+  {
+    rank: 10,
+    username: "WebWizard",
+    pfp: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
+    address: "0xAAAA...BBBB",
+    votes: 50,
+    artcoin: 900,
+    movement: "down",
+  },
 ];
 
 const getRankEmoji = (rank: number) => {
@@ -107,7 +161,7 @@ const Leaderboard = () => {
           </div>
         )}
 
-        <div className="max-w-4xl mx-auto bg-white/80 backdrop-blur-sm rounded-lg shadow-xl p-6 mb-12">
+        <div className="max-w-4xl mx-auto bg-white/80 backdrop-blur-sm rounded-lg shadow-xl p-6">
           <div className="flex items-center justify-center gap-2 mb-6">
             <Trophy className="w-8 h-8 text-purple-900" />
             <h1 className="text-3xl font-bold text-purple-900">Leaderboard</h1>
@@ -126,7 +180,7 @@ const Leaderboard = () => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {MOCK_USERS.map((user) => (
+                {MOCK_USERS.slice(0, 10).map((user) => (
                   <TableRow key={user.address}>
                     <TableCell className="text-center font-bold text-xl">
                       {getRankEmoji(user.rank)}
@@ -157,7 +211,7 @@ const Leaderboard = () => {
           </div>
         </div>
 
-        <footer className="mt-12 text-purple-700 space-y-2 mb-12">
+        <footer className="mt-12 text-purple-700 space-y-2">
           <p>© 2025 ArtCoin - Making Web3 Weird Again ✨</p>
           <div className="flex justify-center gap-2 text-2xl">
             🎨 💩 🎨 💩 🎨
