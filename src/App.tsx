@@ -7,6 +7,7 @@ import { WagmiProvider } from 'wagmi'
 import { config } from './lib/web3Config'
 import Index from "./pages/Index";
 import Manifesto from "./pages/Manifesto";
+import Leaderboard from "./pages/Leaderboard";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/manifesto" element={<Manifesto />} />
+            <Route path="/leaderboard" element={<Leaderboard />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
