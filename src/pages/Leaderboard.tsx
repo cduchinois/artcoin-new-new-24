@@ -68,7 +68,7 @@ const Leaderboard = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-artcoin-yellow via-artcoin-pink to-artcoin-blue">
-      <div className="container mx-auto px-4 py-8 text-center">
+      <div className="container mx-auto px-4 py-8">
         {!isMobile ? (
           <div className="mb-8">
             <div className="text-2xl mb-4 text-purple-900">
@@ -107,7 +107,7 @@ const Leaderboard = () => {
           </div>
         )}
 
-        <div className="max-w-4xl mx-auto bg-white/80 backdrop-blur-sm rounded-lg shadow-xl p-6 mb-12">
+        <div className="max-w-4xl mx-auto bg-white/80 backdrop-blur-sm rounded-lg shadow-xl p-6">
           <div className="flex items-center justify-center gap-2 mb-6">
             <Trophy className="w-8 h-8 text-purple-900" />
             <h1 className="text-3xl font-bold text-purple-900">Leaderboard</h1>
@@ -157,7 +157,7 @@ const Leaderboard = () => {
           </div>
         </div>
 
-        <footer className="mt-12 text-purple-700 space-y-2 mb-12">
+        <footer className="text-purple-700 space-y-2">
           <p>© 2025 ArtCoin - Making Web3 Weird Again ✨</p>
           <div className="flex justify-center gap-2 text-2xl">
             🎨 💩 🎨 💩 🎨
