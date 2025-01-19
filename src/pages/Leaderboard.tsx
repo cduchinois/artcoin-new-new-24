@@ -68,49 +68,49 @@ const Leaderboard = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-artcoin-yellow via-artcoin-pink to-artcoin-blue">
-      <div className="container mx-auto px-4 py-8 text-center">
+      <div className="container mx-auto px-4 py-8">
         {!isMobile ? (
           <div className="mb-8">
-            <div className="text-2xl mb-4 text-purple-900">
+            <div className="text-xl mb-4 text-purple-900">
               🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨
             </div>
-            <div className="text-2xl font-bold mb-4 text-purple-900">
+            <div className="text-xl font-bold mb-4 text-purple-900">
               🎨 <Link to="/" className="hover:opacity-75">HOME</Link> 💩 <Link to="/manifesto" className="hover:opacity-75">MANIFESTO</Link> 🏆 LEADERBOARD 🎨
             </div>
-            <div className="text-2xl mb-8 text-purple-900">
+            <div className="text-xl mb-8 text-purple-900">
               🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨
             </div>
           </div>
         ) : (
           <div className="mb-8">
-            <div className="text-2xl mb-4 text-purple-900">
+            <div className="text-xl mb-4 text-purple-900">
               🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
             </div>
-            <div className="text-2xl font-bold mb-4 text-purple-900">
+            <div className="text-xl font-bold mb-4 text-purple-900">
               🎨 <Link to="/" className="hover:opacity-75">HOME</Link> 🎨
             </div>
-            <div className="text-2xl mb-4 text-purple-900">
+            <div className="text-xl mb-4 text-purple-900">
               🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
             </div>
-            <div className="text-2xl font-bold mb-4 text-purple-900">
+            <div className="text-xl font-bold mb-4 text-purple-900">
               🎨 <Link to="/manifesto" className="hover:opacity-75">MANIFESTO</Link> 🎨
             </div>
-            <div className="text-2xl mb-4 text-purple-900">
+            <div className="text-xl mb-4 text-purple-900">
               🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
             </div>
-            <div className="text-2xl font-bold mb-4 text-purple-900">
+            <div className="text-xl font-bold mb-4 text-purple-900">
               🎨 LEADERBOARD 🎨
             </div>
-            <div className="text-2xl mb-8 text-purple-900">
+            <div className="text-xl mb-8 text-purple-900">
               🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
             </div>
           </div>
         )}
 
-        <div className="bg-white/80 backdrop-blur-sm rounded-lg shadow-xl p-6 mb-12">
+        <div className="bg-white/90 rounded-lg shadow-lg p-6 mb-8">
           <div className="flex items-center justify-center gap-2 mb-6">
-            <Trophy className="w-8 h-8 text-purple-900" />
-            <h1 className="text-3xl font-bold text-purple-900">Leaderboard</h1>
+            <Trophy className="w-6 h-6 text-purple-900" />
+            <h1 className="text-2xl font-bold text-purple-900">Leaderboard</h1>
           </div>
 
           <div className="overflow-x-auto">
@@ -157,9 +157,9 @@ const Leaderboard = () => {
           </div>
         </div>
 
-        <footer className="mt-12 text-purple-700 space-y-2 mb-12">
+        <footer className="mt-8 text-purple-700 space-y-2 mb-8">
           <p>© 2025 ArtCoin - Making Web3 Weird Again ✨</p>
-          <div className="flex justify-center gap-2 text-2xl">
+          <div className="flex justify-center gap-2 text-xl">
             🎨 💩 🎨 💩 🎨
           </div>
         </footer>
