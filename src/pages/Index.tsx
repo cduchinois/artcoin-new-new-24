@@ -1,22 +1,51 @@
 import { ConnectWalletButton } from "@/components/ConnectWalletButton";
 import { ArtDisplay } from "@/components/ArtDisplay";
 import { Statistics } from "@/components/Statistics";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Index = () => {
+  const isMobile = useIsMobile();
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-artcoin-yellow via-artcoin-pink to-artcoin-blue">
       <div className="container mx-auto px-4 py-8 text-center">
-        <div className="mb-8">
-          <div className="text-2xl mb-4">
-            🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨
+        {!isMobile ? (
+          <div className="mb-8">
+            <div className="text-2xl mb-4 text-purple-900">
+              🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨
+            </div>
+            <div className="text-2xl font-bold mb-4 text-purple-900">
+              🎨 HOME 💩 MANIFESTO 🏆 LEADERBOARD 🎨
+            </div>
+            <div className="text-2xl mb-8 text-purple-900">
+              🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨
+            </div>
           </div>
-          <div className="text-2xl font-bold mb-4">
-            🎨 HOME 💩 MANIFESTO 🏆 LEADERBOARD 🎨
+        ) : (
+          <div className="mb-8">
+            <div className="text-2xl mb-4 text-purple-900">
+              🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
+            </div>
+            <div className="text-2xl font-bold mb-4 text-purple-900">
+              🎨 HOME 🎨
+            </div>
+            <div className="text-2xl mb-4 text-purple-900">
+              🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
+            </div>
+            <div className="text-2xl font-bold mb-4 text-purple-900">
+              🎨 MANIFESTO 🎨
+            </div>
+            <div className="text-2xl mb-4 text-purple-900">
+              🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
+            </div>
+            <div className="text-2xl font-bold mb-4 text-purple-900">
+              🎨 LEADERBOARD 🎨
+            </div>
+            <div className="text-2xl mb-8 text-purple-900">
+              🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
+            </div>
           </div>
-          <div className="text-2xl mb-8">
-            🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨
-          </div>
-        </div>
+        )}
 
         <div className="mb-8 space-y-4">
           <div className="flex justify-center gap-2 text-4xl">
