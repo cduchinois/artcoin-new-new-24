@@ -14,27 +14,34 @@ const Manifesto = () => {
   const [emojis, setEmojis] = useState<Emoji[]>([]);
   const emojisText = ["🎨", "💩", "🚽"];
 
-  const createEmoji = useCallback((windowWidth: number, windowHeight: number): Emoji => ({
-    id: Math.random(),
-    x: Math.random() * windowWidth,
-    y: Math.random() * windowHeight,
-    text: emojisText[Math.floor(Math.random() * emojisText.length)],
-    size: Math.random() * (30 - 18) + 18,
-    xSpeed: (Math.random() - 0.5) * 4,
-    ySpeed: (Math.random() - 0.5) * 4
-  }), []);
+  const createEmoji = useCallback((windowWidth: number, windowHeight: number): Emoji => {
+    const speedMultiplier = Math.random() > 0.5 ? 1 : 2; // 50% chance of being faster
+    return {
+      id: Math.random(),
+      x: Math.random() * windowWidth,
+      y: Math.random() * windowHeight,
+      text: emojisText[Math.floor(Math.random() * emojisText.length)],
+      size: Math.random() * (30 - 18) + 18,
+      xSpeed: (Math.random() - 0.5) * 4 * speedMultiplier,
+      ySpeed: (Math.random() - 0.5) * 4 * speedMultiplier
+    };
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      const height = window.innerHeight;
+      const height = document.documentElement.scrollHeight; // Use full document height
       setEmojis(Array.from({ length: 15 }, () => createEmoji(width, height)));
     };
 
     handleResize();
     window.addEventListener('resize', handleResize);
+    window.addEventListener('scroll', handleResize);
     
-    return () => window.removeEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('scroll', handleResize);
+    };
   }, [createEmoji]);
 
   useEffect(() => {
@@ -46,8 +53,9 @@ const Manifesto = () => {
           let newXSpeed = emoji.xSpeed;
           let newYSpeed = emoji.ySpeed;
 
+          const height = document.documentElement.scrollHeight;
           if (newX < 0 || newX > window.innerWidth) newXSpeed *= -1;
-          if (newY < 0 || newY > window.innerHeight) newYSpeed *= -1;
+          if (newY < 0 || newY > height) newYSpeed *= -1;
 
           return {
             ...emoji,
@@ -65,24 +73,27 @@ const Manifesto = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-artcoin-yellow via-artcoin-pink to-artcoin-blue relative overflow-hidden">
-      {emojis.map(emoji => (
-        <div
-          key={emoji.id}
-          className="absolute pointer-events-none select-none"
-          style={{
-            left: `${emoji.x}px`,
-            top: `${emoji.y}px`,
-            fontSize: `${emoji.size}px`,
-            transform: 'translate(-50%, -50%)',
-          }}
-        >
-          {emoji.text}
-        </div>
-      ))}
+    <div className="min-h-screen bg-gradient-to-br from-artcoin-yellow via-artcoin-pink to-artcoin-blue relative">
+      <div className="fixed inset-0 pointer-events-none">
+        {emojis.map(emoji => (
+          <div
+            key={emoji.id}
+            className="absolute select-none"
+            style={{
+              left: `${emoji.x}px`,
+              top: `${emoji.y}px`,
+              fontSize: `${emoji.size}px`,
+              transform: 'translate(-50%, -50%)',
+              zIndex: 10,
+            }}
+          >
+            {emoji.text}
+          </div>
+        ))}
+      </div>
       
-      <div className="container mx-auto px-4 py-16 relative z-10">
-        <div className="prose prose-lg mx-auto bg-white/80 backdrop-blur-sm p-8 rounded-lg shadow-xl">
+      <div className="container mx-auto px-4 py-16 relative">
+        <div className="prose prose-lg mx-auto bg-white/80 backdrop-blur-sm p-8 rounded-lg shadow-xl relative z-0">
           <h2 className="text-3xl font-bold mb-6 text-purple-900">What is ArtCoin?</h2>
           <p className="text-lg mb-6">
             ArtCoin is the world's first aesthetic prediction market, where art criticism meets crypto absurdity.

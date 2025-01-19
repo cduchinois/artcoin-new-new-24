@@ -2,6 +2,7 @@ import { ConnectWalletButton } from "@/components/ConnectWalletButton";
 import { ArtDisplay } from "@/components/ArtDisplay";
 import { Statistics } from "@/components/Statistics";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   const isMobile = useIsMobile();
@@ -15,7 +16,7 @@ const Index = () => {
               🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨
             </div>
             <div className="text-2xl font-bold mb-4 text-purple-900">
-              🎨 HOME 💩 MANIFESTO 🏆 LEADERBOARD 🎨
+              🎨 <Link to="/" className="hover:opacity-75">HOME</Link> 💩 <Link to="/manifesto" className="hover:opacity-75">MANIFESTO</Link> 🏆 LEADERBOARD 🎨
             </div>
             <div className="text-2xl mb-8 text-purple-900">
               🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨 💩 🎨
@@ -27,13 +28,13 @@ const Index = () => {
               🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
             </div>
             <div className="text-2xl font-bold mb-4 text-purple-900">
-              🎨 HOME 🎨
+              🎨 <Link to="/" className="hover:opacity-75">HOME</Link> 🎨
             </div>
             <div className="text-2xl mb-4 text-purple-900">
               🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
             </div>
             <div className="text-2xl font-bold mb-4 text-purple-900">
-              🎨 MANIFESTO 🎨
+              🎨 <Link to="/manifesto" className="hover:opacity-75">MANIFESTO</Link> 🎨
             </div>
             <div className="text-2xl mb-4 text-purple-900">
               🎨 💩 🎨 💩 🎨 💩 🎨 💩🎨
