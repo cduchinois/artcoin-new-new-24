@@ -9,21 +9,44 @@ const placeholderImages = [
   "https://images.unsplash.com/photo-1518770660439-4636190af475",
 ];
 
+const funnyResponses = {
+  good: [
+    "You've got exquisite taste! Here's",
+    "A true art connoisseur! Take",
+    "Your art knowledge is showing! Enjoy",
+    "The Louvre called, they want your opinion! Here's",
+  ],
+  bad: [
+    "Brutal honesty pays! Here's",
+    "Someone had to say it! Take",
+    "The artist might cry, but here's",
+    "Keeping it real! Enjoy",
+  ],
+};
+
 export const ArtDisplay = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [totalVotes, setTotalVotes] = useState(0);
+  const [totalArtcoins, setTotalArtcoins] = useState(0);
   const { toast } = useToast();
   const x = useMotionValue(0);
   const rotate = useTransform(x, [-200, 200], [-10, 10]);
-  const opacity = useTransform(
-    x,
-    [-200, -100, 0, 100, 200],
-    [0, 1, 1, 1, 0]
-  );
+  const opacity = useTransform(x, [-200, -100, 0, 100, 200], [0, 1, 1, 1, 0]);
+
+  const getRandomReward = () => Math.floor(Math.random() * 91) + 10; // Random between 10-100
+  const getRandomResponse = (type: 'good' | 'bad') => 
+    funnyResponses[type][Math.floor(Math.random() * funnyResponses[type].length)];
 
   const handleVote = (isGood: boolean) => {
+    const reward = getRandomReward();
+    const response = getRandomResponse(isGood ? 'good' : 'bad');
+    
+    setTotalVotes(prev => prev + 1);
+    setTotalArtcoins(prev => prev + reward);
+    
     toast({
       title: isGood ? "Great Art! 🎨" : "Bad Art! 💩",
-      description: "Your vote has been recorded!",
+      description: `${response} ${reward} $ARTCOIN! 🪙`,
     });
     
     setCurrentImageIndex((prev) => 
