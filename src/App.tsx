@@ -21,13 +21,11 @@ const App = () => (
         <BrowserRouter>
           <div className="min-h-screen">
             <NavigationBar />
-            <div className="pt-16"> {/* Add padding to account for fixed navbar */}
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/manifesto" element={<Manifesto />} />
-                <Route path="/leaderboard" element={<Leaderboard />} />
-              </Routes>
-            </div>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/manifesto" element={<Manifesto />} />
+              <Route path="/leaderboard" element={<Leaderboard />} />
+            </Routes>
           </div>
         </BrowserRouter>
       </TooltipProvider>
