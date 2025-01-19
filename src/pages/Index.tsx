@@ -48,7 +48,7 @@ const Index = () => {
           </div>
         )}
 
-        <div className="mb-8 space-y-4">
+        <div className="mb-4 space-y-2">
           <div className="flex justify-center gap-2 text-4xl">
             🎨 💩 🎨 💩 🎨
           </div>
@@ -58,7 +58,7 @@ const Index = () => {
             "You probably won't be eligible for the unfair airdrop due to your questionable taste,
             but you can farm some by testing your artistic judgment!"
           </p>
-          <div className="pt-4">
+          <div className="pt-2">
             <ConnectWalletButton />
           </div>
         </div>
