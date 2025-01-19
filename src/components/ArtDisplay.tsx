@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Heart, Poop } from "lucide-react";
+import { Heart, ThumbsDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 
@@ -51,7 +51,7 @@ export const ArtDisplay = () => {
           onClick={() => handleVote(false)}
           className="bg-pink-200 hover:bg-pink-300 text-pink-800 px-8 py-6 rounded-full text-lg font-bold transition-all hover:scale-105"
         >
-          <Poop className="mr-2" />
+          <ThumbsDown className="mr-2" />
           BAD ART! 🤮
         </Button>
       </div>
