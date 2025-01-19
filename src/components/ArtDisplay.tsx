@@ -42,31 +42,35 @@ export const ArtDisplay = () => {
     if (isAnimating) return;
     const currentX = e.touches[0].clientX;
     const diff = currentX - startX;
-    setOffsetX(diff);
+    const threshold = window.innerWidth * 0.4;
+    
+    // Limit the drag distance
+    if (Math.abs(diff) <= threshold) {
+      setOffsetX(diff);
+    }
   };
 
   const handleTouchEnd = () => {
-    const threshold = 100;
+    const threshold = window.innerWidth * 0.3; // 30% of screen width for swipe threshold
     if (Math.abs(offsetX) > threshold) {
       handleVote(offsetX > 0);
     } else {
-      setOffsetX(0);
+      setOffsetX(0); // Reset to center if threshold not reached
     }
   };
 
   const getCardStyle = () => {
     if (isAnimating) {
       return swipeDirection === 'right'
-        ? 'translate-x-full rotate-12 scale-95'
-        : '-translate-x-full -rotate-12 scale-95';
+        ? 'translate-x-full'
+        : '-translate-x-full';
     }
     
     if (offsetX !== 0) {
-      const rotate = (offsetX / window.innerWidth) * 45; // Max rotation of 45 degrees
-      return `transform translate-x-[${offsetX}px] rotate-[${rotate}deg]`;
+      return `transform translate-x-[${offsetX}px]`;
     }
     
-    return 'translate-x-0 rotate-0 scale-100';
+    return 'translate-x-0';
   };
 
   return (
@@ -80,7 +84,7 @@ export const ArtDisplay = () => {
         <img
           src={placeholderImages[currentImageIndex]}
           alt="Artwork"
-          className={`w-full h-full object-cover transition-all duration-300 ${getCardStyle()}`}
+          className={`w-full h-full object-cover transition-transform duration-300 ease-out ${getCardStyle()}`}
           draggable="false"
         />
       </div>
