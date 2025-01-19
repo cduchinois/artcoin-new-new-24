@@ -1,26 +1,59 @@
 import { Wallet } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { useAccount, useConnect, useDisconnect } from 'wagmi'
 
 export const ConnectWalletButton = () => {
   const { toast } = useToast();
+  const { address, isConnected } = useAccount()
+  const { connect, connectors, isLoading, pendingConnector } = useConnect({
+    onSuccess(data) {
+      toast({
+        title: "Wallet Connected",
+        description: `Connected to ${data.account.slice(0, 6)}...${data.account.slice(-4)}`,
+      });
+    },
+    onError(error) {
+      toast({
+        title: "Connection Error",
+        description: error.message,
+        variant: "destructive",
+      });
+    },
+  })
+  const { disconnect } = useDisconnect()
 
-  const handleConnect = () => {
-    toast({
-      title: "Wallet Connection",
-      description: "This is a demo - wallet connection is not implemented yet!",
-    });
-  };
+  if (isConnected) {
+    return (
+      <Button
+        onClick={() => disconnect()}
+        className="bg-gradient-to-r from-artcoin-yellow via-artcoin-pink to-artcoin-blue 
+                  hover:opacity-90 transition-opacity animate-shimmer bg-[length:200%_100%]
+                  text-purple-900 font-bold rounded-full px-8 py-6"
+      >
+        <Wallet className="mr-2 h-5 w-5" />
+        {`${address?.slice(0, 6)}...${address?.slice(-4)}`}
+      </Button>
+    )
+  }
 
   return (
-    <Button
-      onClick={handleConnect}
-      className="bg-gradient-to-r from-artcoin-yellow via-artcoin-pink to-artcoin-blue 
-                hover:opacity-90 transition-opacity animate-shimmer bg-[length:200%_100%]
-                text-purple-900 font-bold rounded-full px-8 py-6"
-    >
-      <Wallet className="mr-2 h-5 w-5" />
-      🌈 Connect Wallet 🌈
-    </Button>
+    <>
+      {connectors.map((connector) => (
+        <Button
+          disabled={!connector.ready || isLoading}
+          key={connector.id}
+          onClick={() => connect({ connector })}
+          className="bg-gradient-to-r from-artcoin-yellow via-artcoin-pink to-artcoin-blue 
+                    hover:opacity-90 transition-opacity animate-shimmer bg-[length:200%_100%]
+                    text-purple-900 font-bold rounded-full px-8 py-6"
+        >
+          <Wallet className="mr-2 h-5 w-5" />
+          {isLoading && connector.id === pendingConnector?.id
+            ? '🌈 Connecting... 🌈'
+            : '🌈 Connect Wallet 🌈'}
+        </Button>
+      ))}
+    </>
   );
 };
