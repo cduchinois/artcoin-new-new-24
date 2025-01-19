@@ -11,7 +11,7 @@ export const ConnectWalletButton = () => {
       onSuccess(data) {
         toast({
           title: "Wallet Connected",
-          description: `Connected to ${data.account.slice(0, 6)}...${data.account.slice(-4)}`,
+          description: `Connected to ${data.accounts[0].slice(0, 6)}...${data.accounts[0].slice(-4)}`,
         });
       },
       onError(error) {
