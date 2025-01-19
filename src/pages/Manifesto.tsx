@@ -94,7 +94,7 @@ const Manifesto = () => {
         ))}
       </div>
       
-      <div className="container mx-auto px-4 text-center">
+      <div className="container mx-auto px-4 text-center pb-12">
         {!isMobile ? (
           <div className="mb-8 pt-8">
             <div className="text-2xl mb-4 text-purple-900">
@@ -223,7 +223,7 @@ const Manifesto = () => {
           </p>
         </div>
 
-        <footer className="mt-12 text-purple-700 space-y-2">
+        <footer className="mt-12 mb-12 text-purple-700 space-y-2">
           <p>© 2025 ArtCoin - Making Web3 Weird Again ✨</p>
           <div className="flex justify-center gap-2 text-2xl">
             🎨 💩 🎨 💩 🎨
