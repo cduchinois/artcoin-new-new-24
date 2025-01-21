@@ -22,5 +22,21 @@
     "id": "2",
     "image_url": "https://i.imgur.com/abc456.jpg",
     "popularity_score": 87654321
+  },
+  {
+    "cast_author_displayname": "Mike Johnson",
+    "cast_author_username": "mikej",
+    "cast_caption": "When you find out your favorite show is canceled.",
+    "id": "3",
+    "image_url": "https://i.imgur.com/def789.jpg",
+    "popularity_score": 23456789
+  },
+  {
+    "cast_author_displayname": "Emily Davis",
+    "cast_author_username": "emilyd",
+    "cast_caption": "Me trying to explain my weekend plans.",
+    "id": "4",
+    "image_url": "https://i.imgur.com/ghi012.jpg",
+    "popularity_score": 34567890
   }
 ]
