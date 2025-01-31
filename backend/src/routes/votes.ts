@@ -3,7 +3,7 @@ import { Router, Request, Response, NextFunction } from "express";
 import { body, validationResult } from "express-validator";
 import { supabase } from "../index";
 import { ethers } from "ethers";
-import { VoteRequest } from "../types";
+import { VoteRequest, CreateUserRequest, CreateArtworkRequest } from "../types";
 
 const router = Router();
 
@@ -75,6 +75,44 @@ const handleVote: RequestHandler = async (req, res) => {
   }
 };
 
+type CreateUserHandler = (
+  req: Request<{}, {}, CreateUserRequest>,
+  res: Response,
+  next: NextFunction
+) => Promise<void>;
+
+const handleCreateUser: CreateUserHandler = async (req, res) => {
+  try {
+    const { userAddress } = req.body;
+
+    if (!ethers.isAddress(userAddress)) {
+      res.status(400).json({ error: "Invalid Ethereum address" });
+      return;
+    }
+
+    const { data: user, error: userError } = await supabase
+      .from("users")
+      .insert({
+        address: userAddress,
+        total_votes: 0,
+        total_artcoins: 0,
+        last_vote_at: new Date().toISOString(),
+      })
+      .select()
+      .single();
+
+    if (userError) throw userError;
+
+    res.json({ success: true, data: user });
+  } catch (error: any) {
+    console.error("User creation error:", error);
+    res.status(500).json({
+      error: "Failed to create user",
+      details: error.message,
+    });
+  }
+};
+
 // GET /api/votes/leaderboard
 const getLeaderboard = async (req: Request, res: Response): Promise<void> => {
   try {
@@ -92,8 +130,50 @@ const getLeaderboard = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
+type CreateArtworkHandler = (
+  req: Request<{}, {}, CreateArtworkRequest>,
+  res: Response,
+  next: NextFunction
+) => Promise<void>;
+
+const validateArtworkRules = [
+  body("imageUrl").isURL().withMessage("Invalid image URL"),
+];
+
+const handleCreateArtwork: CreateArtworkHandler = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    res.status(400).json({ errors: errors.array() });
+    return;
+  }
+
+  try {
+    const { imageUrl } = req.body;
+
+    const { data: artwork, error: artworkError } = await supabase
+      .from("artworks")
+      .insert({
+        image_url: imageUrl,
+      })
+      .select()
+      .single();
+
+    if (artworkError) throw artworkError;
+
+    res.json({ success: true, data: artwork });
+  } catch (error: any) {
+    console.error("Artwork creation error:", error);
+    res.status(500).json({
+      error: "Failed to create artwork",
+      details: error.message,
+    });
+  }
+};
+
 // Routes
-router.post('/', validateVoteRules, handleVote);
-router.get('/leaderboard', getLeaderboard);
+router.post("/", validateVoteRules, handleVote);
+router.get("/leaderboard", getLeaderboard);
+router.post("/user", handleCreateUser);
+router.post("/artwork", validateArtworkRules, handleCreateArtwork);
 
 export { router as votesRouter };

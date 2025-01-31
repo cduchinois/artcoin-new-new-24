@@ -1,10 +1,8 @@
-// backend/src/index.ts
 import express, { Request, Response } from "express";
 import cors from "cors";
 import helmet from "helmet";
 import dotenv from "dotenv";
 import { createClient } from "@supabase/supabase-js";
-import rateLimit from "express-rate-limit";
 import { votesRouter } from "./routes/votes";
 
 dotenv.config();
@@ -27,13 +25,6 @@ app.use(
   })
 );
 app.use(express.json());
-
-// Rate limiting
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // Changed 'limit' to 'max'
-});
-app.use(limiter);
 
 // Routes
 app.use("/api/votes", votesRouter);

@@ -17,6 +17,14 @@ export interface Vote {
   created_at: string;
 }
 
+export interface CreateArtworkRequest {
+  imageUrl: string;
+}
+
+export interface CreateUserRequest {
+  userAddress: string;
+}
+
 export interface User {
   address: string;
   total_votes: number;
