@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { WagmiProvider } from 'wagmi';
-import { mainnet } from 'wagmi/chains';
+import { mainnet, base } from 'wagmi/chains';
 import { config } from './lib/web3Config';
 import { PrivyProvider } from '@privy-io/react-auth';
 import Index from "./pages/Index";
@@ -26,8 +26,8 @@ const App = () => {
           theme: 'light',
           accentColor: '#676FFF',
         },
-        supportedChains: [mainnet],
-        defaultChain: mainnet,
+        supportedChains: [base, mainnet],
+        defaultChain: base,
       }}
     >
       <WagmiProvider config={config}>
