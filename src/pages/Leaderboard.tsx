@@ -129,11 +129,11 @@ const Leaderboard = () => {
             <Table>
               <TableHeader>
                 <TableRow>
+                  <TableHead className="text-center">Trend</TableHead>
                   <TableHead>Artwork</TableHead>
                   <TableHead className="text-center">Good Votes 🎨</TableHead>
                   <TableHead className="text-center">Bad Votes 💩</TableHead>
                   <TableHead className="text-center">Total Votes</TableHead>
-                  <TableHead className="text-center">Trend</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -142,6 +142,13 @@ const Leaderboard = () => {
                     key={artwork.image}
                     className={getRowClass(artwork.goodVotes, artwork.badVotes)}
                   >
+                    <TableCell className="text-center">
+                      {artwork.trend === "up" ? (
+                        <ArrowUp className="inline-block w-5 h-5 text-green-500" />
+                      ) : (
+                        <ArrowDown className="inline-block w-5 h-5 text-red-500" />
+                      )}
+                    </TableCell>
                     <TableCell>
                       <div className="flex items-center gap-2">
                         <img
@@ -160,13 +167,6 @@ const Leaderboard = () => {
                     </TableCell>
                     <TableCell className="text-center font-medium">
                       {artwork.totalVotes}
-                    </TableCell>
-                    <TableCell className="text-center">
-                      {artwork.trend === "up" ? (
-                        <ArrowUp className="inline-block w-5 h-5 text-green-500" />
-                      ) : (
-                        <ArrowDown className="inline-block w-5 h-5 text-red-500" />
-                      )}
                     </TableCell>
                   </TableRow>
                 ))}
