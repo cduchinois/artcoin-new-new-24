@@ -28,9 +28,6 @@ const App = () => {
         },
         supportedChains: [mainnet],
         defaultChain: mainnet,
-        walletConnectorConfig: {
-          defaultConnect: 'embedded',
-        },
       }}
     >
       <WagmiProvider config={config}>
