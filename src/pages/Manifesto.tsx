@@ -104,7 +104,7 @@ const Manifesto = () => {
             </ol>
           </Card>
 
-          <Card className="p-6 bg-white/95 backdrop-blur-sm shadow-xl">
+          <Card className="p-6 backdrop-blur-sm">
             <ArtistQuotes />
           </Card>
 
