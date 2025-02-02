@@ -11,7 +11,6 @@ import { Navigation } from "@/components/Navigation";
 
 const MOCK_ARTWORKS = [
   {
-    rank: 1,
     image: "/lovable-uploads/e7c9d1f9-6b61-49a8-b375-97e67191a6f3.png",
     goodVotes: 150,
     badVotes: 20,
@@ -20,7 +19,6 @@ const MOCK_ARTWORKS = [
     trend: "up",
   },
   {
-    rank: 2,
     image: "/lovable-uploads/f1931887-eaf2-445f-92c4-b5165e4d365b.png",
     goodVotes: 120,
     badVotes: 30,
@@ -29,7 +27,6 @@ const MOCK_ARTWORKS = [
     trend: "up",
   },
   {
-    rank: 3,
     image: "/lovable-uploads/ad87c205-7cdd-4da0-9b55-d55e48fb2fec.png",
     goodVotes: 90,
     badVotes: 40,
@@ -38,7 +35,6 @@ const MOCK_ARTWORKS = [
     trend: "down",
   },
   {
-    rank: 4,
     image: "/lovable-uploads/0a8bbc92-eb17-4ee4-9fe6-3fecfda84ff5.png",
     goodVotes: 70,
     badVotes: 50,
@@ -47,7 +43,6 @@ const MOCK_ARTWORKS = [
     trend: "down",
   },
   {
-    rank: 5,
     image: "/lovable-uploads/2dc9e872-89c2-490f-b254-388d8d780461.png",
     goodVotes: 50,
     badVotes: 60,
@@ -56,7 +51,6 @@ const MOCK_ARTWORKS = [
     trend: "up",
   },
   {
-    rank: 6,
     image: "/lovable-uploads/b0f3f7e3-d226-4a6a-bd9b-fde29e7d89b3.png",
     goodVotes: 40,
     badVotes: 70,
@@ -65,7 +59,6 @@ const MOCK_ARTWORKS = [
     trend: "down",
   },
   {
-    rank: 7,
     image: "/lovable-uploads/ee377a21-0a1f-4cf7-9e6c-f80ebdb7c30c.png",
     goodVotes: 30,
     badVotes: 80,
@@ -74,7 +67,6 @@ const MOCK_ARTWORKS = [
     trend: "up",
   },
   {
-    rank: 8,
     image: "/lovable-uploads/f12d21e6-14cb-462a-aaa0-41c90f13df32.png",
     goodVotes: 20,
     badVotes: 90,
@@ -83,19 +75,6 @@ const MOCK_ARTWORKS = [
     trend: "down",
   },
 ];
-
-const getRankEmoji = (rank: number) => {
-  switch (rank) {
-    case 1:
-      return "🥇";
-    case 2:
-      return "🥈";
-    case 3:
-      return "🥉";
-    default:
-      return rank;
-  }
-};
 
 const getRowClass = (goodVotes: number, badVotes: number) => {
   const ratio = goodVotes / (goodVotes + badVotes);
@@ -120,7 +99,6 @@ const Leaderboard = () => {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="text-center">Rank</TableHead>
                   <TableHead>Artwork</TableHead>
                   <TableHead className="text-center">Good Votes 🎨</TableHead>
                   <TableHead className="text-center">Bad Votes 💩</TableHead>
@@ -135,14 +113,11 @@ const Leaderboard = () => {
                     key={artwork.image}
                     className={getRowClass(artwork.goodVotes, artwork.badVotes)}
                   >
-                    <TableCell className="text-center font-bold text-xl">
-                      {getRankEmoji(artwork.rank)}
-                    </TableCell>
                     <TableCell>
                       <div className="flex items-center gap-2">
                         <img
                           src={artwork.image}
-                          alt={`Rank ${artwork.rank} artwork`}
+                          alt="Artwork"
                           className="w-16 h-16 rounded-lg object-cover"
                         />
                       </div>
