@@ -13,25 +13,25 @@ const teamMembers: TeamMember[] = [
     name: "Marcel Ducoin", 
     role: "the Unfair Art Monarch", 
     description: "They who hold the most worthless JPEGs",
-    image: "https://i.seadn.io/gcs/files/c4dfc6be4d9a0c1fb2eb1c8ee97c5eef.png?auto=format&dpr=1&w=1000"
+    image: "/lovable-uploads/de0e6c59-976e-48cd-9a78-81cae783c024.png"
   },
   { 
     name: "Pablo Picashflow", 
     role: "Art Fixers", 
     description: "They who judge the judges",
-    image: "https://i.seadn.io/gcs/files/d0a7245e0cd8cc18b1aa36e0bb075521.png?auto=format&dpr=1&w=1000"
+    image: "/lovable-uploads/12295a8e-378a-4210-9f88-0e85552a5ec4.png"
   },
   { 
     name: "Claude MonETH", 
     role: "Taste Architects", 
     description: "They who shitpost in hexcode",
-    image: "https://i.seadn.io/gcs/files/ef6bcb8f1d9e5cf04a1ea89e804b4d8b.png?auto=format&dpr=1&w=1000"
+    image: "/lovable-uploads/8499e5bd-89a3-41eb-80e6-d0c29cba239f.png"
   },
   { 
     name: "Human Bot Interns", 
     role: "The Pretenders", 
     description: "They who pretend to be AI pretending to be human",
-    image: "https://i.seadn.io/gcs/files/d1460061b6b093d35c10a1c500d0186f.png?auto=format&dpr=1&w=1000"
+    image: "/lovable-uploads/506735ef-efbb-4213-9958-7f690723b9a2.png"
   }
 ];
 
