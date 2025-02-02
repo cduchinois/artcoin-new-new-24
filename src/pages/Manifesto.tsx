@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { Navigation } from "@/components/Navigation";
 import { Card } from "@/components/ui/card";
-import { Twitter, MessageCircle } from "lucide-react";
+import { Twitter, MessageCircle, User, Users, List } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface Emoji {
   id: number;
@@ -178,87 +179,83 @@ const Manifesto = () => {
           <Card className="p-6 bg-white/95 backdrop-blur-sm shadow-xl">
             <h2 className="text-2xl font-bold mb-4 text-purple-900">Artists Quotes</h2>
             <div className="text-left space-y-6">
-              <div>
-                <p className="italic">"Every JPEG is art. The problem is how to remain bullish when the floor price drops."</p>
-                <p className="font-bold mt-1">- Pablo Picasso</p>
-              </div>
-              <div>
-                <p>"My Pokémon cards are worth almost nothing today."</p>
-                <p className="font-bold mt-1">- Jake Paul</p>
-              </div>
-              <div>
-                <p className="italic">"What would life be if we had no courage to ape into a rug-pull?"</p>
-                <p className="font-bold mt-1">- Vincent van Gogh</p>
-              </div>
-              <div>
-                <p className="italic">"I mint tokens so they won't be forgotten, even if nobody buys them."</p>
-                <p className="font-bold mt-1">- Frida Kahlo</p>
-              </div>
-              <div>
-                <p className="italic">"Crypto is never finished, only abandoned wallets."</p>
-                <p className="font-bold mt-1">- Leonardo da Vinci</p>
-              </div>
-              <div>
-                <p className="italic">"I just gave away 1,000 Ethereum to strangers because why not?"</p>
-                <p className="font-bold mt-1">- MrBeast</p>
-              </div>
-              <div>
-                <p className="italic">"I found I could say things with memes and shitposts that I couldn't say with traditional art—like 'gm' a thousand times."</p>
-                <p className="font-bold mt-1">- Georgia O'Keeffe</p>
-              </div>
-              <div>
-                <p className="italic">"Liquidity takes courage. Or at least a MetaMask login."</p>
-                <p className="font-bold mt-1">- Henri Matisse</p>
-              </div>
-              <div>
-                <p className="italic">"Don't think about the roadmap, just mint the NFT. Let everyone else decide if it's a scam. While they're deciding, mint more."</p>
-                <p className="font-bold mt-1">- Andy Warhol</p>
-              </div>
-              <div>
-                <p className="italic">"I must have gas fees, always, and always."</p>
-                <p className="font-bold mt-1">- Claude Monet</p>
-              </div>
-              <div>
-                <p className="italic">"Have no fear of FOMO—you'll never beat the whales anyway."</p>
-                <p className="font-bold mt-1">- Salvador Dalí</p>
-              </div>
-              <div>
-                <p className="italic">"With just one blockchain, nothing can be achieved. In the metaverse, there are tokens, apes, rugs, and hundreds of millions of Discord servers."</p>
-                <p className="font-bold mt-1">- Yayoi Kusama</p>
-              </div>
+              {[
+                { name: "Pablo Picasso", quote: "Every JPEG is art. The problem is how to remain bullish when the floor price drops.", image: "photo-1581092795360-fd1ca04f0952" },
+                { name: "Jake Paul", quote: "My Pokémon cards are worth almost nothing today." },
+                { name: "Vincent van Gogh", quote: "What would life be if we had no courage to ape into a rug-pull?" },
+                { name: "Frida Kahlo", quote: "I mint tokens so they won't be forgotten, even if nobody buys them." },
+                { name: "Leonardo da Vinci", quote: "Crypto is never finished, only abandoned wallets." },
+                { name: "MrBeast", quote: "I just gave away 1,000 Ethereum to strangers because why not?" },
+                { name: "Georgia O'Keeffe", quote: "I found I could say things with memes and shitposts that I couldn't say with traditional art—like 'gm' a thousand times." },
+                { name: "Henri Matisse", quote: "Liquidity takes courage. Or at least a MetaMask login." },
+                { name: "Andy Warhol", quote: "Don't think about the roadmap, just mint the NFT. Let everyone else decide if it's a scam. While they're deciding, mint more." },
+                { name: "Claude Monet", quote: "I must have gas fees, always, and always." },
+                { name: "Salvador Dalí", quote: "Have no fear of FOMO—you'll never beat the whales anyway." },
+                { name: "Yayoi Kusama", quote: "With just one blockchain, nothing can be achieved. In the metaverse, there are tokens, apes, rugs, and hundreds of millions of Discord servers." }
+              ].map((artist, index) => (
+                <div key={index} className="flex items-start gap-4 p-4 rounded-lg bg-artcoin-blue/20 hover:bg-artcoin-blue/30 transition-colors">
+                  <Avatar className="w-12 h-12 border-2 border-artcoin-purple">
+                    <AvatarImage src={artist.image ? `https://images.unsplash.com/${artist.image}` : undefined} />
+                    <AvatarFallback>
+                      <User className="w-6 h-6" />
+                    </AvatarFallback>
+                  </Avatar>
+                  <div className="flex-1">
+                    <div className="relative bg-white p-4 rounded-lg shadow-md before:content-[''] before:absolute before:left-[-8px] before:top-4 before:w-4 before:h-4 before:bg-white before:transform before:rotate-45">
+                      <p className="italic mb-2">{artist.quote}</p>
+                      <p className="font-bold text-purple-900">{artist.name}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </Card>
 
-          <Card className="p-6 bg-white/95 backdrop-blur-sm shadow-xl">
-            <h2 className="text-2xl font-bold mb-4 text-purple-900">Build the Artcoin Metaverse Museum together</h2>
-            <ul className="text-left list-disc pl-6 space-y-2">
-              <li>No entrance</li>
-              <li>No exit</li>
-              <li>No art</li>
-              <li>Just vibes</li>
-              <li>(Requires 100% token supply to maybe see what's inside)</li>
-            </ul>
+          {/* Team Hierarchy Section */}
+          <Card className="p-6 bg-white/95 backdrop-blur-sm shadow-xl mt-8">
+            <h2 className="text-2xl font-bold mb-6 text-purple-900">The ArtCoin team Hierarchy</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[
+                { name: "Marcel Ducoin", role: "the Unfair Art Monarch", description: "They who hold the most worthless JPEGs" },
+                { name: "Pablo Picashflow", role: "Art Fixers", description: "They who judge the judges" },
+                { name: "Claude MonETH", role: "Taste Architects", description: "They who shitpost in hexcode" },
+                { name: "Human Bot Interns", role: "The Pretenders", description: "They who pretend to be AI pretending to be human" }
+              ].map((member, index) => (
+                <div key={index} className="flex flex-col items-center p-4 rounded-lg bg-gradient-to-b from-artcoin-purple/20 to-artcoin-blue/20 hover:from-artcoin-purple/30 hover:to-artcoin-blue/30 transition-all">
+                  <div className="mb-4 p-4 rounded-full bg-artcoin-yellow/30">
+                    <Users className="w-12 h-12 text-purple-900" />
+                  </div>
+                  <h3 className="text-lg font-bold text-purple-900">{member.name}</h3>
+                  <p className="text-sm font-medium text-purple-700 mb-2">{member.role}</p>
+                  <p className="text-sm text-purple-600 text-center">{member.description}</p>
+                </div>
+              ))}
+            </div>
           </Card>
 
-          <Card className="p-6 bg-white/95 backdrop-blur-sm shadow-xl">
-            <h2 className="text-2xl font-bold mb-4 text-purple-900">The ArtCoin team Hierarchy</h2>
-            <ul className="text-left space-y-4">
-              <li><strong>Marcel Ducoin</strong>: the Unfair Art Monarch: They who hold the most worthless JPEGs</li>
-              <li><strong>Pablo Picashflow:</strong> Art Fixers: They who judge the judges</li>
-              <li><strong>Claude MonETH:</strong> Taste Architects: They who shitpost in hexcode</li>
-              <li><strong>Human Bot Interns:</strong> They who pretend to be AI pretending to be human</li>
-            </ul>
-          </Card>
-
-          <Card className="p-6 bg-white/95 backdrop-blur-sm shadow-xl">
-            <h2 className="text-2xl font-bold mb-4 text-purple-900">Future Roadmap (Maybe)</h2>
-            <ul className="text-left list-disc pl-6 space-y-2">
-              <li>Create the first on-chain certified museum of "objectively bad art"</li>
-              <li>Host an IRL exhibition where all artworks are invisible but drinks are free</li>
-              <li>Develop an AI art critic that becomes progressively nicer with each $ARTCOIN donation</li>
-              <li>Create an NFT collection where each token is just the AI roasting other NFTs</li>
-              <li>Launch a DAO where governance proposals must be written in emojis</li>
-            </ul>
+          {/* Roadmap Section */}
+          <Card className="p-6 bg-white/95 backdrop-blur-sm shadow-xl mt-8">
+            <h2 className="text-2xl font-bold mb-6 text-purple-900">Future Roadmap (Maybe)</h2>
+            <div className="relative">
+              {[
+                "Create the first on-chain certified museum of \"objectively bad art\"",
+                "Host an IRL exhibition where all artworks are invisible but drinks are free",
+                "Develop an AI art critic that becomes progressively nicer with each $ARTCOIN donation",
+                "Create an NFT collection where each token is just the AI roasting other NFTs",
+                "Launch a DAO where governance proposals must be written in emojis"
+              ].map((step, index) => (
+                <div key={index} className="relative flex items-center mb-8 last:mb-0">
+                  <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-artcoin-purple/30" />
+                  <div className="absolute left-[-8px] w-4 h-4 rounded-full bg-artcoin-purple animate-pulse" />
+                  <div className="ml-8 p-4 flex-1 rounded-lg bg-gradient-to-r from-artcoin-yellow/20 to-artcoin-blue/20 hover:from-artcoin-yellow/30 hover:to-artcoin-blue/30 transition-colors">
+                    <div className="flex items-center gap-3">
+                      <List className="w-5 h-5 text-purple-900 flex-shrink-0" />
+                      <p className="text-purple-900">{step}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </Card>
 
           <Card className="p-6 bg-white/95 backdrop-blur-sm shadow-xl italic text-purple-800">
