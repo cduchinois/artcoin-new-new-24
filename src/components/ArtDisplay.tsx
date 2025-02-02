@@ -39,8 +39,9 @@ const funnyResponses = {
   ],
 };
 
-// Replace with your actual reCAPTCHA site key
-const RECAPTCHA_SITE_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
+// Replace with your actual reCAPTCHA site key from Google reCAPTCHA admin console
+// For development, we'll use a key that works in localhost and test environments
+const RECAPTCHA_SITE_KEY = "6LfC3oopAAAAAFPbqtqV_oYBV_xQqGEKHOZxZaCT";
 
 export const ArtDisplay = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -105,12 +106,31 @@ export const ArtDisplay = () => {
     }
   };
 
-  const handleCaptchaSuccess = () => {
+  const handleCaptchaSuccess = (token: string | null) => {
+    if (!token) {
+      toast({
+        title: "CAPTCHA Error",
+        description: "Please try again",
+        variant: "destructive",
+      });
+      return;
+    }
+
     if (pendingVote !== null) {
       setShowCaptcha(false);
       setPendingVote(null);
       processVote(pendingVote);
     }
+  };
+
+  const handleCaptchaError = () => {
+    toast({
+      title: "CAPTCHA Error",
+      description: "Failed to verify. Please try again.",
+      variant: "destructive",
+    });
+    setPendingVote(null);
+    setShowCaptcha(false);
   };
 
   const handleCaptchaClose = () => {
@@ -167,6 +187,7 @@ export const ArtDisplay = () => {
             <ReCAPTCHA
               sitekey={RECAPTCHA_SITE_KEY}
               onChange={handleCaptchaSuccess}
+              onError={handleCaptchaError}
             />
           </div>
         </DialogContent>
