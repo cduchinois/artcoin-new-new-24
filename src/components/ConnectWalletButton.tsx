@@ -2,49 +2,63 @@ import { Wallet } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useAccount, useConnect, useDisconnect } from 'wagmi';
+import { usePrivy } from '@privy-io/react-auth';
 
 export const ConnectWalletButton = () => {
   const { toast } = useToast();
   const { address, isConnected } = useAccount();
   const { connectAsync, connectors } = useConnect();
   const { disconnectAsync } = useDisconnect();
+  const { login, logout, user } = usePrivy();
 
   const metaMaskConnector = connectors.find((c) => c.name === 'MetaMask');
 
   const handleConnect = async () => {
-    if (!metaMaskConnector) {
-      toast({
-        title: "Connection Error",
-        description: "MetaMask connector not found. Please install MetaMask.",
-        variant: "destructive",
-      });
-      return;
-    }
-
     try {
-      const result = await connectAsync({
-        connector: metaMaskConnector,
-      });
+      // Try Privy login first
+      await login();
+    } catch (error: any) {
+      console.error('Privy login error:', error);
       
-      if (result?.accounts[0]) {
+      // Fallback to MetaMask if Privy fails
+      if (!metaMaskConnector) {
         toast({
-          title: "Wallet Connected",
-          description: `Connected to ${result.accounts[0].slice(0, 6)}...${result.accounts[0].slice(-4)}`,
+          title: "Connection Error",
+          description: "MetaMask connector not found. Please install MetaMask.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      try {
+        const result = await connectAsync({
+          connector: metaMaskConnector,
+        });
+        
+        if (result?.accounts[0]) {
+          toast({
+            title: "Wallet Connected",
+            description: `Connected to ${result.accounts[0].slice(0, 6)}...${result.accounts[0].slice(-4)}`,
+          });
+        }
+      } catch (error: any) {
+        console.error('MetaMask connection error:', error);
+        toast({
+          title: "Connection Error",
+          description: error.message || "Failed to connect wallet",
+          variant: "destructive",
         });
       }
-    } catch (error: any) {
-      console.error('Connection error:', error);
-      toast({
-        title: "Connection Error",
-        description: error.message || "Failed to connect wallet",
-        variant: "destructive",
-      });
     }
   };
 
   const handleDisconnect = async () => {
     try {
-      await disconnectAsync();
+      if (user) {
+        await logout();
+      } else {
+        await disconnectAsync();
+      }
       toast({
         title: "Wallet Disconnected",
         description: "Your wallet has been disconnected",
@@ -59,7 +73,11 @@ export const ConnectWalletButton = () => {
     }
   };
 
-  if (isConnected && address) {
+  const isUserConnected = isConnected || user;
+  const displayAddress = user?.farcaster?.username || 
+    (address ? `${address.slice(0, 6)}...${address.slice(-4)}` : '');
+
+  if (isUserConnected) {
     return (
       <Button
         onClick={handleDisconnect}
@@ -68,7 +86,7 @@ export const ConnectWalletButton = () => {
                   text-purple-900 font-bold rounded-full px-8 py-6"
       >
         <Wallet className="mr-2 h-5 w-5" />
-        {`${address.slice(0, 6)}...${address.slice(-4)}`}
+        {displayAddress}
       </Button>
     );
   }
@@ -81,7 +99,7 @@ export const ConnectWalletButton = () => {
                 text-purple-900 font-bold rounded-full px-8 py-6"
     >
       <Wallet className="mr-2 h-5 w-5" />
-      🌈 Connect Wallet 🌈
+      🌈 Connect Wallet/Farcaster 🌈
     </Button>
   );
 };
