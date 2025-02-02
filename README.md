@@ -1,69 +1,64 @@
-# Welcome to your Lovable project
+# 🎨 ArtCoin - Making Web3 Weird Again ✨
 
-## Project info
+ArtCoin is a fun and interactive web application that lets users vote on artwork and earn $ARTCOIN tokens. It's a playful take on Web3 art curation with a twist - you can vote whether something is "Good Art" or "Bad Art"!
 
-**URL**: https://lovable.dev/projects/e991d1a5-1bee-45a2-bcc6-1eaf3f005fd4
+## Features
 
-## How can I edit this code?
+- 🖼️ Swipe through a curated collection of artwork
+- 👍👎 Vote on whether it's "Good Art" or "Bad Art"
+- 💰 Earn $ARTCOIN tokens for participating
+- 🤖 Anti-bot protection with CAPTCHA verification
+- 🌈 Beautiful, responsive UI with smooth animations
 
-There are several ways of editing your application.
+## Tech Stack
 
-**Use Lovable**
+- React + TypeScript
+- Vite for blazing fast builds
+- Tailwind CSS for styling
+- shadcn/ui for UI components
+- Framer Motion for animations
+- ReCAPTCHA for bot protection
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/e991d1a5-1bee-45a2-bcc6-1eaf3f005fd4) and start prompting.
+## Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
+1. Clone the repository
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
 git clone <YOUR_GIT_URL>
+cd artcoin
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2. Install dependencies
+```sh
+npm install
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. Start the development server
+```sh
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Project Structure
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- `/src/components` - React components
+- `/src/pages` - Page components
+- `/src/hooks` - Custom React hooks
+- `/src/utils` - Utility functions
+- `/public` - Static assets
 
-**Use GitHub Codespaces**
+## Contributing
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Feel free to submit issues and enhancement requests!
 
-## What technologies are used for this project?
+## License
 
-This project is built with .
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Links
 
-## How can I deploy this project?
+- [Live Demo](https://lovable.dev/projects/e991d1a5-1bee-45a2-bcc6-1eaf3f005fd4)
+- [Twitter](https://x.com/artcoin_base)
+- [Telegram](https://t.me/ahahahartcoin)
 
-Simply open [Lovable](https://lovable.dev/projects/e991d1a5-1bee-45a2-bcc6-1eaf3f005fd4) and click on Share -> Publish.
+---
 
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+Built with ❤️ using [Lovable](https://lovable.dev)
