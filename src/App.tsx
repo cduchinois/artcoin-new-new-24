@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { WagmiProvider } from 'wagmi';
+import { mainnet } from 'wagmi/chains';
 import { config } from './lib/web3Config';
 import { PrivyProvider } from '@privy-io/react-auth';
 import Index from "./pages/Index";
@@ -25,7 +26,11 @@ const App = () => {
           theme: 'light',
           accentColor: '#676FFF',
         },
-        supportedChains: [1], // Ethereum mainnet
+        supportedChains: [mainnet],
+        defaultChain: mainnet,
+        walletConnectorConfig: {
+          defaultConnect: 'embedded',
+        },
       }}
     >
       <WagmiProvider config={config}>
