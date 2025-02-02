@@ -103,7 +103,7 @@ const Leaderboard = () => {
             <h1 className="text-3xl font-bold text-purple-900">Taste Ranking</h1>
           </div>
 
-          <div className="mb-6 space-y-4">
+          <div className="mb-6 flex flex-col md:flex-row gap-4">
             <div className="flex-1">
               <Input
                 type="search"
@@ -111,7 +111,7 @@ const Leaderboard = () => {
                 className="w-full"
               />
             </div>
-            <div className="flex-1">
+            <div className="w-full md:w-48">
               <Select defaultValue="24h">
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select time period" />
