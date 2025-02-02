@@ -9,8 +9,6 @@ import { PrivyProvider } from '@privy-io/react-auth';
 import Index from "./pages/Index";
 import Manifesto from "./pages/Manifesto";
 import Leaderboard from "./pages/Leaderboard";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { AlertCircle } from "lucide-react";
 
 const queryClient = new QueryClient();
 
@@ -22,11 +20,12 @@ const App = () => {
     <PrivyProvider
       appId={PRIVY_APP_ID}
       config={{
-        loginMethods: ['farcaster', 'wallet'],
+        loginMethods: ['farcaster', 'wallet', 'email'],
         appearance: {
           theme: 'light',
           accentColor: '#676FFF',
         },
+        supportedChains: [1], // Ethereum mainnet
       }}
     >
       <WagmiProvider config={config}>
