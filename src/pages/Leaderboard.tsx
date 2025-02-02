@@ -8,70 +8,71 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Navigation } from "@/components/Navigation";
+import { Input } from "@/components/ui/input";
 
 const MOCK_ARTWORKS = [
   {
     image: "/lovable-uploads/e7c9d1f9-6b61-49a8-b375-97e67191a6f3.png",
+    name: "Happy Cat",
     goodVotes: 150,
     badVotes: 20,
     totalVotes: 170,
-    rating: "Good Art 🎨",
     trend: "up",
   },
   {
     image: "/lovable-uploads/f1931887-eaf2-445f-92c4-b5165e4d365b.png",
+    name: "Dancing Penguin",
     goodVotes: 120,
     badVotes: 30,
     totalVotes: 150,
-    rating: "Good Art 🎨",
     trend: "up",
   },
   {
     image: "/lovable-uploads/ad87c205-7cdd-4da0-9b55-d55e48fb2fec.png",
+    name: "Untitled",
     goodVotes: 90,
     badVotes: 40,
     totalVotes: 130,
-    rating: "Good Art 🎨",
     trend: "down",
   },
   {
     image: "/lovable-uploads/0a8bbc92-eb17-4ee4-9fe6-3fecfda84ff5.png",
+    name: "Grumpy Dog",
     goodVotes: 70,
     badVotes: 50,
     totalVotes: 120,
-    rating: "Neutral Art 🤔",
     trend: "down",
   },
   {
     image: "/lovable-uploads/2dc9e872-89c2-490f-b254-388d8d780461.png",
+    name: "Untitled",
     goodVotes: 50,
     badVotes: 60,
     totalVotes: 110,
-    rating: "Bad Art 💩",
     trend: "up",
   },
   {
     image: "/lovable-uploads/b0f3f7e3-d226-4a6a-bd9b-fde29e7d89b3.png",
+    name: "Sleepy Sloth",
     goodVotes: 40,
     badVotes: 70,
     totalVotes: 110,
-    rating: "Bad Art 💩",
     trend: "down",
   },
   {
     image: "/lovable-uploads/ee377a21-0a1f-4cf7-9e6c-f80ebdb7c30c.png",
+    name: "Party Parrot",
     goodVotes: 30,
     badVotes: 80,
     totalVotes: 110,
-    rating: "Bad Art 💩",
     trend: "up",
   },
   {
     image: "/lovable-uploads/f12d21e6-14cb-462a-aaa0-41c90f13df32.png",
+    name: "Untitled",
     goodVotes: 20,
     badVotes: 90,
     totalVotes: 110,
-    rating: "Bad Art 💩",
     trend: "down",
   },
 ];
@@ -92,7 +93,26 @@ const Leaderboard = () => {
         <div className="max-w-4xl mx-auto bg-white/80 backdrop-blur-sm rounded-lg shadow-xl p-6">
           <div className="flex items-center justify-center gap-2 mb-6">
             <Trophy className="w-8 h-8 text-purple-900" />
-            <h1 className="text-3xl font-bold text-purple-900">Art Rankings</h1>
+            <h1 className="text-3xl font-bold text-purple-900">Taste Ranking</h1>
+          </div>
+
+          <div className="mb-6 flex gap-4">
+            <div className="flex-1">
+              <label htmlFor="dateFrom" className="block text-sm font-medium text-gray-700 mb-1">From</label>
+              <Input
+                type="date"
+                id="dateFrom"
+                className="w-full"
+              />
+            </div>
+            <div className="flex-1">
+              <label htmlFor="dateTo" className="block text-sm font-medium text-gray-700 mb-1">To</label>
+              <Input
+                type="date"
+                id="dateTo"
+                className="w-full"
+              />
+            </div>
           </div>
 
           <div className="overflow-x-auto">
@@ -103,7 +123,6 @@ const Leaderboard = () => {
                   <TableHead className="text-center">Good Votes 🎨</TableHead>
                   <TableHead className="text-center">Bad Votes 💩</TableHead>
                   <TableHead className="text-center">Total Votes</TableHead>
-                  <TableHead className="text-center">Rating</TableHead>
                   <TableHead className="text-center">Trend</TableHead>
                 </TableRow>
               </TableHeader>
@@ -117,9 +136,10 @@ const Leaderboard = () => {
                       <div className="flex items-center gap-2">
                         <img
                           src={artwork.image}
-                          alt="Artwork"
+                          alt={artwork.name}
                           className="w-16 h-16 rounded-lg object-cover"
                         />
+                        <span className="font-medium">{artwork.name}</span>
                       </div>
                     </TableCell>
                     <TableCell className="text-center font-medium text-green-600">
@@ -130,9 +150,6 @@ const Leaderboard = () => {
                     </TableCell>
                     <TableCell className="text-center font-medium">
                       {artwork.totalVotes}
-                    </TableCell>
-                    <TableCell className="text-center font-medium">
-                      {artwork.rating}
                     </TableCell>
                     <TableCell className="text-center">
                       {artwork.trend === "up" ? (
