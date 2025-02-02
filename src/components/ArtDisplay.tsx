@@ -1,8 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { motion, useMotionValue, useTransform } from "framer-motion";
-import memeData from "@/data/memes.json";
+
+const placeholderImages = [
+  "/lovable-uploads/e7c9d1f9-6b61-49a8-b375-97e67191a6f3.png",
+  "/lovable-uploads/f1931887-eaf2-445f-92c4-b5165e4d365b.png",
+  "/lovable-uploads/ad87c205-7cdd-4da0-9b55-d55e48fb2fec.png",
+  "/lovable-uploads/0a8bbc92-eb17-4ee4-9fe6-3fecfda84ff5.png",
+  "/lovable-uploads/2dc9e872-89c2-490f-b254-388d8d780461.png",
+  "/lovable-uploads/b0f3f7e3-d226-4a6a-bd9b-fde29e7d89b3.png",
+  "/lovable-uploads/ee377a21-0a1f-4cf7-9e6c-f80ebdb7c30c.png",
+  "/lovable-uploads/f12d21e6-14cb-462a-aaa0-41c90f13df32.png",
+  "/lovable-uploads/d8d82c86-a2e2-4d21-be64-7f5efc3a2be3.png",
+  "/lovable-uploads/b597c233-0e4d-48f1-b6b0-ad54cb43b42a.png",
+];
 
 const funnyResponses = {
   good: [
@@ -28,7 +40,7 @@ export const ArtDisplay = () => {
   const rotate = useTransform(x, [-200, 200], [-10, 10]);
   const opacity = useTransform(x, [-200, -100, 0, 100, 200], [0, 1, 1, 1, 0]);
 
-  const getRandomReward = () => Math.floor(Math.random() * 91) + 10;
+  const getRandomReward = () => Math.floor(Math.random() * 91) + 10; // Random between 10-100
   const getRandomResponse = (type: 'good' | 'bad') => 
     funnyResponses[type][Math.floor(Math.random() * funnyResponses[type].length)];
 
@@ -39,6 +51,7 @@ export const ArtDisplay = () => {
     setTotalVotes(prev => prev + 1);
     setTotalArtcoins(prev => prev + reward);
     
+    // Create hidden elements to track stats
     const voteEl = document.createElement('div');
     voteEl.setAttribute('data-vote', 'true');
     voteEl.style.display = 'none';
@@ -55,7 +68,7 @@ export const ArtDisplay = () => {
     });
     
     setCurrentImageIndex((prev) => 
-      (prev + 1) % memeData.length
+      (prev + 1) % placeholderImages.length
     );
   };
 
@@ -79,14 +92,10 @@ export const ArtDisplay = () => {
         whileTap={{ cursor: "grabbing" }}
       >
         <img
-          src={memeData[currentImageIndex].image_url}
-          alt={memeData[currentImageIndex].cast_caption}
+          src={placeholderImages[currentImageIndex]}
+          alt="Artwork"
           className="w-full h-full object-cover"
         />
-        <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-4">
-          <p className="font-bold">{memeData[currentImageIndex].cast_author_displayname}</p>
-          <p className="text-sm">{memeData[currentImageIndex].cast_caption}</p>
-        </div>
       </motion.div>
       
       <h2 className="text-2xl font-bold text-purple-800 mt-6 mb-4">
