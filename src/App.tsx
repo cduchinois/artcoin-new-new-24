@@ -14,28 +14,10 @@ import { AlertCircle } from "lucide-react";
 
 const queryClient = new QueryClient();
 
-// Check if the Privy App ID is available
-const PRIVY_APP_ID = import.meta.env.VITE_PRIVY_APP_ID;
-
-// Create a fallback component for when Privy App ID is missing
-const PrivyErrorFallback = () => (
-  <div className="container mx-auto p-4">
-    <Alert variant="destructive">
-      <AlertCircle className="h-4 w-4" />
-      <AlertTitle>Configuration Error</AlertTitle>
-      <AlertDescription>
-        VITE_PRIVY_APP_ID environment variable is not set. Please set it in your .env file.
-      </AlertDescription>
-    </Alert>
-  </div>
-);
+// Hardcoded Privy App ID (in production, use environment variables)
+const PRIVY_APP_ID = "cm6nup6nf01e6fcyiopxye976";
 
 const App = () => {
-  // If no Privy App ID is available, show the error message
-  if (!PRIVY_APP_ID) {
-    return <PrivyErrorFallback />;
-  }
-
   return (
     <PrivyProvider
       appId={PRIVY_APP_ID}
