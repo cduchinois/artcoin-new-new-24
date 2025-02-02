@@ -2,6 +2,7 @@ import { ConnectWalletButton } from "@/components/ConnectWalletButton";
 import { ArtDisplay } from "@/components/ArtDisplay";
 import { Statistics } from "@/components/Statistics";
 import { Navigation } from "@/components/Navigation";
+import { Twitter, MessageCircle } from "lucide-react";
 
 const Index = () => {
   return (
@@ -28,8 +29,26 @@ const Index = () => {
         <ArtDisplay />
         <Statistics />
 
-        <footer className="mt-12 text-purple-700 space-y-2">
+        <footer className="mt-12 text-purple-700 space-y-4">
           <p>© 2025 ArtCoin - Making Web3 Weird Again ✨</p>
+          <div className="flex justify-center gap-6">
+            <a 
+              href="https://x.com/artcoin_base" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-purple-900 transition-colors"
+            >
+              <Twitter className="w-6 h-6" />
+            </a>
+            <a 
+              href="https://t.me/ahahahartcoin" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-purple-900 transition-colors"
+            >
+              <MessageCircle className="w-6 h-6" />
+            </a>
+          </div>
           <div className="flex justify-center gap-2 text-2xl">
             🎨 💩 🎨 💩 🎨
           </div>
