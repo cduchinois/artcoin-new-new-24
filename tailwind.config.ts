@@ -18,6 +18,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        graffiti: ["Permanent Marker", "cursive"],
+      },
       colors: {
         artcoin: {
           yellow: "#FFE5A3",
