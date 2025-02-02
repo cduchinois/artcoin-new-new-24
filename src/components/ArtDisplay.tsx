@@ -2,6 +2,14 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { motion, useMotionValue, useTransform } from "framer-motion";
+import ReCAPTCHA from "react-google-recaptcha";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const placeholderImages = [
   "/lovable-uploads/e7c9d1f9-6b61-49a8-b375-97e67191a6f3.png",
@@ -31,20 +39,34 @@ const funnyResponses = {
   ],
 };
 
+// Replace with your actual reCAPTCHA site key
+const RECAPTCHA_SITE_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
+
 export const ArtDisplay = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [totalVotes, setTotalVotes] = useState(0);
   const [totalArtcoins, setTotalArtcoins] = useState(0);
+  const [showCaptcha, setShowCaptcha] = useState(false);
   const { toast } = useToast();
   const x = useMotionValue(0);
   const rotate = useTransform(x, [-200, 200], [-10, 10]);
   const opacity = useTransform(x, [-200, -100, 0, 100, 200], [0, 1, 1, 1, 0]);
 
-  const getRandomReward = () => Math.floor(Math.random() * 91) + 10; // Random between 10-100
+  const getRandomReward = () => Math.floor(Math.random() * 91) + 10;
   const getRandomResponse = (type: 'good' | 'bad') => 
     funnyResponses[type][Math.floor(Math.random() * funnyResponses[type].length)];
 
   const handleVote = (isGood: boolean) => {
+    // Check if we need to show CAPTCHA (every 10 votes)
+    if ((totalVotes + 1) % 10 === 0) {
+      setShowCaptcha(true);
+      return;
+    }
+
+    processVote(isGood);
+  };
+
+  const processVote = (isGood: boolean) => {
     const reward = getRandomReward();
     const response = getRandomResponse(isGood ? 'good' : 'bad');
     
@@ -79,6 +101,12 @@ export const ArtDisplay = () => {
     } else if (info.offset.x < -threshold) {
       handleVote(false);
     }
+  };
+
+  const handleCaptchaSuccess = () => {
+    setShowCaptcha(false);
+    // Process the pending vote after CAPTCHA is solved
+    processVote(x.get() > 0);
   };
 
   return (
@@ -117,6 +145,23 @@ export const ArtDisplay = () => {
           💩
         </Button>
       </div>
+
+      <Dialog open={showCaptcha} onOpenChange={setShowCaptcha}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Verify you're human</DialogTitle>
+            <DialogDescription>
+              Please complete the CAPTCHA to continue voting
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex justify-center py-4">
+            <ReCAPTCHA
+              sitekey={RECAPTCHA_SITE_KEY}
+              onChange={handleCaptchaSuccess}
+            />
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
