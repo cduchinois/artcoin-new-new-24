@@ -9,6 +9,13 @@ import {
 } from "@/components/ui/table";
 import { Navigation } from "@/components/Navigation";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const MOCK_ARTWORKS = [
   {
@@ -96,22 +103,25 @@ const Leaderboard = () => {
             <h1 className="text-3xl font-bold text-purple-900">Taste Ranking</h1>
           </div>
 
-          <div className="mb-6 flex gap-4">
+          <div className="mb-6 space-y-4">
             <div className="flex-1">
-              <label htmlFor="dateFrom" className="block text-sm font-medium text-gray-700 mb-1">From</label>
               <Input
-                type="date"
-                id="dateFrom"
+                type="search"
+                placeholder="Search artworks..."
                 className="w-full"
               />
             </div>
             <div className="flex-1">
-              <label htmlFor="dateTo" className="block text-sm font-medium text-gray-700 mb-1">To</label>
-              <Input
-                type="date"
-                id="dateTo"
-                className="w-full"
-              />
+              <Select defaultValue="24h">
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select time period" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="24h">Last 24 hours</SelectItem>
+                  <SelectItem value="7d">Last 7 days</SelectItem>
+                  <SelectItem value="1m">Last month</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
           </div>
 
