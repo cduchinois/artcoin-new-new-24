@@ -47,6 +47,7 @@ export const ArtDisplay = () => {
   const [totalVotes, setTotalVotes] = useState(0);
   const [totalArtcoins, setTotalArtcoins] = useState(0);
   const [showCaptcha, setShowCaptcha] = useState(false);
+  const [pendingVote, setPendingVote] = useState<boolean | null>(null);
   const { toast } = useToast();
   const x = useMotionValue(0);
   const rotate = useTransform(x, [-200, 200], [-10, 10]);
@@ -59,6 +60,7 @@ export const ArtDisplay = () => {
   const handleVote = (isGood: boolean) => {
     // Check if we need to show CAPTCHA (every 10 votes)
     if ((totalVotes + 1) % 10 === 0) {
+      setPendingVote(isGood);
       setShowCaptcha(true);
       return;
     }
@@ -104,9 +106,16 @@ export const ArtDisplay = () => {
   };
 
   const handleCaptchaSuccess = () => {
+    if (pendingVote !== null) {
+      setShowCaptcha(false);
+      setPendingVote(null);
+      processVote(pendingVote);
+    }
+  };
+
+  const handleCaptchaClose = () => {
+    setPendingVote(null);
     setShowCaptcha(false);
-    // Process the pending vote after CAPTCHA is solved
-    processVote(x.get() > 0);
   };
 
   return (
@@ -146,7 +155,7 @@ export const ArtDisplay = () => {
         </Button>
       </div>
 
-      <Dialog open={showCaptcha} onOpenChange={setShowCaptcha}>
+      <Dialog open={showCaptcha} onOpenChange={handleCaptchaClose}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Verify you're human</DialogTitle>
