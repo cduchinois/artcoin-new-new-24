@@ -12,12 +12,20 @@ import Leaderboard from "./pages/Leaderboard";
 
 const queryClient = new QueryClient();
 
+// Check if the Privy App ID is available
+const PRIVY_APP_ID = import.meta.env.VITE_PRIVY_APP_ID;
+if (!PRIVY_APP_ID) {
+  console.error('VITE_PRIVY_APP_ID environment variable is not set');
+}
+
 const App = () => (
   <PrivyProvider
-    appId={import.meta.env.VITE_PRIVY_APP_ID}
+    appId={PRIVY_APP_ID}
     config={{
+      loginMethods: ['farcaster', 'wallet'],
       appearance: {
-        loginMethods: ['farcaster', 'wallet'],
+        theme: 'light',
+        accentColor: '#676FFF',
       },
     }}
   >
