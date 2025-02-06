@@ -177,14 +177,14 @@ export const ArtDisplay = () => {
 
       <div className="mt-4">
         <Button
-          variant="outline"
-          className="text-gray-500 hover:text-gray-600"
+          variant="ghost"
+          className="text-4xl bg-transparent hover:bg-gray-100/20 px-8 py-6 rounded-full transition-all hover:scale-105 border border-white/30"
           onClick={() => toast({
             title: "Coming Soon! 🎨",
             description: "The ability to submit your own art will be available soon!",
           })}
         >
-          Submit your art
+          🖼️
         </Button>
       </div>
 
