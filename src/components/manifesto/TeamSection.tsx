@@ -45,13 +45,14 @@ export const TeamSection = () => {
             key={index}
             className="flex flex-col items-center p-6 rounded-lg hover:from-artcoin-purple/30 hover:to-artcoin-blue/30 transition-all transform hover:-translate-y-1"
           >
-            <div className="relative mb-4 w-32 h-32 rounded-full overflow-hidden border-4 border-artcoin-purple">
-              <img 
-                src={member.image} 
-                alt={member.name} 
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </div>
+            <div 
+              className="mb-4 w-32 h-32 border-4 border-artcoin-purple rounded-full"
+              style={{
+                backgroundImage: `url(${member.image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}
+            />
             <h3 className="text-xl font-sans text-purple-900">{member.name}</h3>
             <p className="text-sm font-sans text-purple-700 mb-2">{member.role}</p>
             <p className="text-sm text-purple-600 text-center font-sans">{member.description}</p>
