@@ -178,7 +178,7 @@ export const ArtDisplay = () => {
       <div className="mt-4">
         <Button
           variant="ghost"
-          className="text-4xl bg-gradient-to-r from-artcoin-yellow via-artcoin-pink to-artcoin-blue 
+          className="text-lg bg-gradient-to-r from-artcoin-yellow via-artcoin-pink to-artcoin-blue 
                     hover:opacity-90 transition-opacity animate-shimmer bg-[length:200%_100%]
                     text-purple-900 font-bold rounded-full px-8 py-6"
           onClick={() => toast({
@@ -186,7 +186,7 @@ export const ArtDisplay = () => {
             description: "Wanna submit your art to be judged? Feature coming soon...",
           })}
         >
-          🖼️
+          Submit your art
         </Button>
       </div>
 
