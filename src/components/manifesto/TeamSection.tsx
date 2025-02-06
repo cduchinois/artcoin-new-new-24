@@ -13,25 +13,25 @@ const teamMembers: TeamMember[] = [
     name: "Marcel Ducoin", 
     role: "the Unfair Art Monarch", 
     description: "They who hold the most worthless JPEGs",
-    image: "/lovable-uploads/de0e6c59-976e-48cd-9a78-81cae783c024.png"
+    image: "/lovable-uploads/2e391061-9dea-4ab2-b262-ceb67923e88b.png"
   },
   { 
     name: "Pablo Picashflow", 
     role: "Art Fixers", 
     description: "They who judge the judges",
-    image: "/lovable-uploads/12295a8e-378a-4210-9f88-0e85552a5ec4.png"
+    image: "/lovable-uploads/d8ffc722-6cce-45c1-afec-1c1de597d202.png"
   },
   { 
     name: "Claude MonETH", 
     role: "Taste Architects", 
     description: "They who shitpost in hexcode",
-    image: "/lovable-uploads/8499e5bd-89a3-41eb-80e6-d0c29cba239f.png"
+    image: "/lovable-uploads/3aa10fb5-6d87-4cb1-a85e-b1cce3eea862.png"
   },
   { 
     name: "Human Bot Interns", 
     role: "The Pretenders", 
     description: "They who pretend to be AI pretending to be human",
-    image: "/lovable-uploads/506735ef-efbb-4213-9958-7f690723b9a2.png"
+    image: "/lovable-uploads/5d7bfa07-43ea-49eb-9a99-ae2e2c8e0818.png"
   }
 ];
 
