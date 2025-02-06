@@ -1,49 +1,53 @@
 import React from "react";
-import { User } from "lucide-react";
+import { Palette } from "lucide-react";
 
 interface Quote {
   name: string;
   quote: string;
-  position: "left" | "right";
 }
 
 const quotes: Quote[] = [
-  { name: "Pablo Picasso", quote: "Every JPEG is art. The problem is how to remain bullish when the floor price drops.", position: "left" },
-  { name: "Jake Paul", quote: "My Pokémon cards are worth almost nothing today.", position: "right" },
-  { name: "Vincent van Gogh", quote: "What would life be if we had no courage to ape into a rug-pull?", position: "left" },
-  { name: "Frida Kahlo", quote: "I mint tokens so they won't be forgotten, even if nobody buys them.", position: "right" },
-  { name: "Leonardo da Vinci", quote: "Crypto is never finished, only abandoned wallets.", position: "left" },
-  { name: "MrBeast", quote: "I just gave away 1,000 Ethereum to strangers because why not?", position: "right" },
-  { name: "Georgia O'Keeffe", quote: "I found I could say things with memes and shitposts that I couldn't say with traditional art—like 'gm' a thousand times.", position: "left" },
-  { name: "Henri Matisse", quote: "Liquidity takes courage. Or at least a MetaMask login.", position: "right" },
-  { name: "Andy Warhol", quote: "Don't think about the roadmap, just mint the NFT. Let everyone else decide if it's a scam. While they're deciding, mint more.", position: "left" },
-  { name: "Claude Monet", quote: "I must have gas fees, always, and always.", position: "right" },
-  { name: "Salvador Dalí", quote: "Have no fear of FOMO—you'll never beat the whales anyway.", position: "left" },
-  { name: "Yayoi Kusama", quote: "With just one blockchain, nothing can be achieved. In the metaverse, there are tokens, apes, rugs, and hundreds of millions of Discord servers.", position: "right" }
+  { name: "Pablo Picasso", quote: "Every JPEG is art. The problem is how to remain bullish when the floor price drops." },
+  { name: "Vincent van Gogh", quote: "What would life be if we had no courage to ape into a rug-pull?" },
+  { name: "Frida Kahlo", quote: "I mint tokens so they won't be forgotten, even if nobody buys them." },
+  { name: "Leonardo da Vinci", quote: "Crypto is never finished, only abandoned wallets." },
+  { name: "MrBeast", quote: "I just gave away 1,000 Ethereum to strangers because why not?" },
+  { name: "Georgia O'Keeffe", quote: "I found I could say things with memes and shitposts that I couldn't say with traditional art—like 'gm' a thousand times." }
 ];
 
 export const ArtistQuotes = () => {
   return (
-    <div className="space-y-6">
-      <h2 className="text-3xl font-graffiti text-purple-900 mb-8">What they are talking about ArtCoin</h2>
-      <div className="grid gap-6">
+    <div className="space-y-8 relative">
+      <div className="flex items-center gap-2 mb-12">
+        <Palette className="w-6 h-6 text-purple-900" />
+        <h2 className="text-3xl font-graffiti text-purple-900">Inspirational Artist Quotes</h2>
+        <span className="text-2xl">🎨</span>
+      </div>
+
+      <div className="space-y-6">
         {quotes.map((quote, index) => (
           <div 
-            key={index} 
-            className={`flex items-start gap-4 ${quote.position === 'right' ? 'flex-row-reverse' : ''}`}
+            key={index}
+            className={`max-w-2xl mx-auto transform transition-all duration-300 hover:scale-105 ${
+              index % 2 === 0 ? 'ml-0' : 'ml-auto'
+            }`}
           >
-            <div className={`flex-1 ${quote.position === 'right' ? 'text-right' : 'text-left'}`}>
-              <div className={`relative p-4 rounded-lg shadow-md ${
-                quote.position === 'right' 
-                  ? 'bg-artcoin-blue before:right-[-8px] before:transform before:rotate-45' 
-                  : 'bg-artcoin-yellow before:left-[-8px] before:transform before:rotate-45'
-              } before:content-[''] before:absolute before:top-4 before:w-4 before:h-4 before:bg-inherit`}>
-                <p className="font-graffiti italic mb-2">{quote.quote}</p>
-                <p className="font-bold text-purple-900">{quote.name}</p>
-              </div>
+            <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-6 shadow-lg border-2 border-pink-200">
+              <p className="text-blue-900 font-graffiti text-lg mb-2">
+                "{quote.quote}"
+              </p>
+              <p className="text-purple-900 font-graffiti text-right">
+                - {quote.name}
+              </p>
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="absolute -z-10 inset-0">
+        <div className="absolute top-12 left-4 text-yellow-400 text-2xl">✨</div>
+        <div className="absolute bottom-24 left-12 text-pink-400 text-2xl">🎨</div>
+        <div className="absolute top-1/3 right-8 text-purple-400 text-2xl">🎯</div>
       </div>
     </div>
   );
