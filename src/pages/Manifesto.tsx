@@ -87,7 +87,7 @@ const Manifesto = () => {
           </Card>
 
           <footer className="mt-12 text-purple-700 space-y-4">
-            <p className="font-graffiti">© 2025 ArtCoin - Making Web3 Weird Again ✨</p>
+            <p className="font-sans">© 2025 ArtCoin - Making Web3 Weird Again ✨</p>
             <div className="flex justify-center gap-6">
               <a 
                 href="https://x.com/artcoin_base" 

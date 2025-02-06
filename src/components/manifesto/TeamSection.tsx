@@ -52,9 +52,9 @@ export const TeamSection = () => {
                 className="w-full h-full object-cover"
               />
             </div>
-            <h3 className="text-xl font-graffiti text-purple-900">{member.name}</h3>
-            <p className="text-sm font-medium text-purple-700 mb-2">{member.role}</p>
-            <p className="text-sm text-purple-600 text-center font-graffiti">{member.description}</p>
+            <h3 className="text-xl font-sans text-purple-900">{member.name}</h3>
+            <p className="text-sm font-sans text-purple-700 mb-2">{member.role}</p>
+            <p className="text-sm text-purple-600 text-center font-sans">{member.description}</p>
           </div>
         ))}
       </div>

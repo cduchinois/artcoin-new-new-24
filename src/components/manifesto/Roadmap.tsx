@@ -25,7 +25,7 @@ export const Roadmap = () => {
             <div className="ml-8 p-4 flex-1 rounded-lg bg-gradient-to-r from-artcoin-yellow/20 to-artcoin-blue/20 hover:from-artcoin-yellow/30 hover:to-artcoin-blue/30 transition-colors">
               <div className="flex items-center gap-3">
                 <List className="w-5 h-5 text-purple-900 flex-shrink-0" />
-                <p className="text-purple-900 font-graffiti">{item.title}</p>
+                <p className="text-purple-900 font-sans">{item.title}</p>
               </div>
             </div>
           </div>
