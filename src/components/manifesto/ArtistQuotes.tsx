@@ -12,7 +12,8 @@ const quotes: Quote[] = [
   { name: "Frida Kahlo", quote: "I mint tokens so they won't be forgotten, even if nobody buys them." },
   { name: "Leonardo da Vinci", quote: "Crypto is never finished, only abandoned wallets." },
   { name: "MrBeast", quote: "I just gave away 1,000 Ethereum to strangers because why not?" },
-  { name: "Georgia O'Keeffe", quote: "I found I could say things with memes and shitposts that I couldn't say with traditional art—like 'gm' a thousand times." }
+  { name: "Georgia O'Keeffe", quote: "I found I could say things with memes and shitposts that I couldn't say with traditional art—like 'gm' a thousand times." },
+  { name: "Logan Paul", quote: "My Pokémon cards are worth almost nothing today." }
 ];
 
 export const ArtistQuotes = () => {
