@@ -178,10 +178,12 @@ export const ArtDisplay = () => {
       <div className="mt-4">
         <Button
           variant="ghost"
-          className="text-4xl bg-transparent hover:bg-gray-100/20 px-8 py-6 rounded-full transition-all hover:scale-105 border border-white/30"
+          className="text-4xl bg-gradient-to-r from-artcoin-yellow via-artcoin-pink to-artcoin-blue 
+                    hover:opacity-90 transition-opacity animate-shimmer bg-[length:200%_100%]
+                    text-purple-900 font-bold rounded-full px-8 py-6"
           onClick={() => toast({
-            title: "Coming Soon! 🎨",
-            description: "The ability to submit your own art will be available soon!",
+            title: "Art Submission 🎨",
+            description: "Wanna submit your art to be judged? Feature coming soon...",
           })}
         >
           🖼️
