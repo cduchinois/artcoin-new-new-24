@@ -28,15 +28,15 @@ export const ArtistQuotes = () => {
         {quotes.map((quote, index) => (
           <div 
             key={index}
-            className={`max-w-2xl mx-auto transform transition-all duration-300 hover:scale-105 ${
-              index % 2 === 0 ? 'ml-0' : 'ml-auto'
+            className={`max-w-xl mx-auto transform transition-all duration-300 hover:scale-105 ${
+              index % 2 === 0 ? 'rotate-[-20deg]' : 'rotate-[20deg]'
             }`}
           >
-            <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-6 shadow-lg border-2 border-pink-200">
-              <p className="text-blue-900 font-graffiti text-lg mb-2">
+            <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-4 shadow-lg border-2 border-pink-200">
+              <p className="text-blue-900 font-graffiti text-base mb-2">
                 "{quote.quote}"
               </p>
-              <p className="text-purple-900 font-graffiti text-right">
+              <p className="text-purple-900 font-graffiti text-right text-sm">
                 - {quote.name}
               </p>
             </div>
