@@ -17,19 +17,19 @@ const quotes: Quote[] = [
 
 export const ArtistQuotes = () => {
   return (
-    <div className="space-y-8 relative">
+    <div className="space-y-12 relative">
       <div className="flex items-center gap-2 mb-12">
         <Palette className="w-6 h-6 text-purple-900" />
         <h2 className="text-3xl font-graffiti text-purple-900">Inspirational Artist Quotes</h2>
         <span className="text-2xl">🎨</span>
       </div>
 
-      <div className="space-y-6">
+      <div className="grid grid-cols-1 gap-16">
         {quotes.map((quote, index) => (
           <div 
             key={index}
             className={`max-w-xl mx-auto transform transition-all duration-300 hover:scale-105 ${
-              index % 2 === 0 ? 'rotate-[-20deg]' : 'rotate-[20deg]'
+              index % 2 === 0 ? 'rotate-[-10deg] ml-12' : 'rotate-[10deg] mr-12'
             }`}
           >
             <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-4 shadow-lg border-2 border-pink-200">
