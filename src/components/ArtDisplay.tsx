@@ -175,21 +175,6 @@ export const ArtDisplay = () => {
         </Button>
       </div>
 
-      <div className="mt-4">
-        <Button
-          variant="ghost"
-          className="text-lg bg-gradient-to-r from-artcoin-yellow via-artcoin-pink to-artcoin-blue 
-                    hover:opacity-90 transition-opacity animate-shimmer bg-[length:200%_100%]
-                    text-purple-900 font-bold rounded-full px-8 py-6"
-          onClick={() => toast({
-            title: "Art Submission 🎨",
-            description: "Wanna submit your art to be judged? Feature coming soon...",
-          })}
-        >
-          Submit your art
-        </Button>
-      </div>
-
       <Dialog open={showCaptcha} onOpenChange={handleCaptchaClose}>
         <DialogContent>
           <DialogHeader>

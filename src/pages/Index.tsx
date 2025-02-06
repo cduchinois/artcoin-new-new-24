@@ -3,8 +3,12 @@ import { ArtDisplay } from "@/components/ArtDisplay";
 import { Statistics } from "@/components/Statistics";
 import { Navigation } from "@/components/Navigation";
 import { Twitter, MessageCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 
 const Index = () => {
+  const { toast } = useToast();
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-artcoin-yellow via-artcoin-pink to-artcoin-blue">
       <div className="container mx-auto px-4 py-8 text-center">
@@ -28,6 +32,21 @@ const Index = () => {
 
         <ArtDisplay />
         <Statistics />
+        
+        <div className="mt-4">
+          <Button
+            variant="ghost"
+            className="text-lg bg-gradient-to-r from-artcoin-yellow via-artcoin-pink to-artcoin-blue 
+                      hover:opacity-90 transition-opacity animate-shimmer bg-[length:200%_100%]
+                      text-purple-900 font-bold rounded-full px-8 py-6"
+            onClick={() => toast({
+              title: "Art Submission 🎨",
+              description: "Hold your horses, art critic! Feature coming soon... Maybe... Probably... Eventually? 🎨",
+            })}
+          >
+            Submit your art
+          </Button>
+        </div>
 
         <footer className="mt-12 text-purple-700 space-y-4">
           <p>© 2025 ArtCoin - Making Web3 Weird Again ✨</p>
