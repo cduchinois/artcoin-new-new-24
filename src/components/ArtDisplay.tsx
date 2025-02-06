@@ -175,6 +175,19 @@ export const ArtDisplay = () => {
         </Button>
       </div>
 
+      <div className="mt-4">
+        <Button
+          variant="outline"
+          className="text-gray-500 hover:text-gray-600"
+          onClick={() => toast({
+            title: "Coming Soon! 🎨",
+            description: "The ability to submit your own art will be available soon!",
+          })}
+        >
+          Submit your art
+        </Button>
+      </div>
+
       <Dialog open={showCaptcha} onOpenChange={handleCaptchaClose}>
         <DialogContent>
           <DialogHeader>
