@@ -30,14 +30,6 @@ const Manifesto = () => {
             </div>
           </Card>
 
-          <div className="w-full h-48 relative overflow-hidden rounded-lg">
-            <img 
-              src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7" 
-              alt="Colorful code" 
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-
           <Card className="p-6 bg-white/95 backdrop-blur-sm shadow-xl">
             <h2 className="text-3xl font-graffiti mb-4 text-purple-900">What is ArtCoin?</h2>
             <div className="text-left font-graffiti">
@@ -47,14 +39,6 @@ const Manifesto = () => {
               <p>Using the $ARTCOIN token, users can vote on whether submitted artworks are "good art" or "bad art," creating a decentralized ecosystem of taste arbitration.</p>
             </div>
           </Card>
-
-          <div className="w-full h-48 relative overflow-hidden rounded-lg">
-            <img 
-              src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" 
-              alt="Development process" 
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-            />
-          </div>
 
           <Card className="p-6 bg-white/95 backdrop-blur-sm shadow-xl">
             <h2 className="text-2xl font-graffiti mb-4 text-purple-900">Core Mechanics</h2>
@@ -68,14 +52,6 @@ const Manifesto = () => {
             </ul>
           </Card>
 
-          <div className="w-full h-48 relative overflow-hidden rounded-lg">
-            <img 
-              src="https://images.unsplash.com/photo-1523712999610-f77fbcfc3843" 
-              alt="Vibrant nature" 
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-
           <Card className="p-6 bg-white/95 backdrop-blur-sm shadow-xl">
             <h2 className="text-2xl font-graffiti mb-4 text-purple-900">The Unfair Launch</h2>
             <div className="text-left font-graffiti">
@@ -84,14 +60,6 @@ const Manifesto = () => {
               <p className="mt-4">The list is top secret. But if you send crypto to the team members we could tell you some alpha.</p>
             </div>
           </Card>
-
-          <div className="w-full h-48 relative overflow-hidden rounded-lg">
-            <img 
-              src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952" 
-              alt="Team representation" 
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-            />
-          </div>
 
           <Card className="p-6 bg-white/95 backdrop-blur-sm shadow-xl">
             <h2 className="text-2xl font-graffiti mb-4 text-purple-900">White toilet paper</h2>
