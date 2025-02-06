@@ -3,7 +3,6 @@ import { Navigation } from "@/components/Navigation";
 import { Card } from "@/components/ui/card";
 import { Twitter, MessageCircle } from "lucide-react";
 import { FloatingEmojis } from "@/components/manifesto/FloatingEmojis";
-import { FloatingImages } from "@/components/manifesto/FloatingImages";
 import { ArtistQuotes } from "@/components/manifesto/ArtistQuotes";
 import { TeamSection } from "@/components/manifesto/TeamSection";
 import { Roadmap } from "@/components/manifesto/Roadmap";
@@ -12,7 +11,6 @@ const Manifesto = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-artcoin-pink via-artcoin-pink to-artcoin-pink/80 relative">
       <FloatingEmojis />
-      <FloatingImages />
 
       <div className="container mx-auto px-4 text-center pb-12">
         <div className="pt-8">
