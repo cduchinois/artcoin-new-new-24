@@ -17,7 +17,7 @@ const quotes: Quote[] = [
 
 export const ArtistQuotes = () => {
   return (
-    <div className="space-y-12 relative">
+    <div className="space-y-12 relative mb-24">
       <div className="flex items-center gap-2 mb-12">
         <Palette className="w-6 h-6 text-purple-900" />
         <h2 className="text-3xl font-sans bg-gradient-rainbow from-purple-500 via-pink-500 to-orange-500 bg-clip-text text-transparent animate-shimmer">Inspirational Artist Quotes</h2>
