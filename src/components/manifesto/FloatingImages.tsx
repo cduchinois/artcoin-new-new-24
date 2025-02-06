@@ -29,27 +29,54 @@ const images = [
 ];
 
 export const FloatingImages = () => {
+  // Create a grid system to avoid overlaps
+  const gridSize = 5; // 5x5 grid
+  const positions = Array(gridSize * gridSize).fill(null);
+  
+  // Assign random positions while maintaining minimum distance
+  const getRandomPosition = (index: number) => {
+    const gridX = (index % gridSize) * (100 / gridSize);
+    const gridY = Math.floor(index / gridSize) * (100 / gridSize);
+    
+    // Add some randomness within the grid cell
+    const x = gridX + (Math.random() * (100 / gridSize) * 0.6);
+    const y = gridY + (Math.random() * (100 / gridSize) * 0.6);
+    
+    return { x, y };
+  };
+
+  // Determine if an image should be larger
+  const getImageSize = (index: number) => {
+    // Make every 5th image larger
+    return index % 5 === 0 ? 'w-48 h-48' : 'w-32 h-32';
+  };
+
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden">
-      {images.map((src, index) => (
-        <div
-          key={index}
-          className="absolute animate-float"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            transform: `rotate(${Math.random() * 360}deg)`,
-            animation: `float ${10 + Math.random() * 10}s infinite ease-in-out`,
-            animationDelay: `${Math.random() * 5}s`,
-          }}
-        >
-          <img
-            src={src}
-            alt=""
-            className="w-32 h-32 object-contain"
-          />
-        </div>
-      ))}
+      {images.map((src, index) => {
+        const pos = getRandomPosition(index);
+        return (
+          <div
+            key={index}
+            className="absolute animate-float"
+            style={{
+              left: `${pos.x}%`,
+              top: `${pos.y}%`,
+              transform: `rotate(${Math.random() * 360}deg)`,
+              animation: `float ${10 + Math.random() * 10}s infinite ease-in-out`,
+              animationDelay: `${Math.random() * 5}s`,
+              // Add margin-top to avoid overlapping with navigation
+              marginTop: '200px'
+            }}
+          >
+            <img
+              src={src}
+              alt=""
+              className={`object-contain ${getImageSize(index)}`}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 };
