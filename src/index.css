@@ -29,7 +29,7 @@
   }
 
   * {
-    @apply border-border;
+    @apply border-border font-['Comic_Sans_MS'];
   }
 
   body {

@@ -20,6 +20,7 @@ export default {
     extend: {
       fontFamily: {
         graffiti: ["Permanent Marker", "cursive"],
+        sans: ["Comic Sans MS", "Comic Sans", "cursive"],
       },
       colors: {
         artcoin: {
