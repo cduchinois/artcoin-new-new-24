@@ -20,7 +20,7 @@ const Manifesto = () => {
         </div>
 
         <div className="max-w-3xl mx-auto space-y-8 prose prose-purple">
-          <div className="p-6 backdrop-blur-sm shadow-xl">
+          <div className="p-6 bg-white/95 backdrop-blur-sm shadow-xl">
             <h1 className="text-4xl font-sans mb-6 bg-gradient-rainbow from-purple-500 via-pink-500 to-orange-500 bg-clip-text text-transparent animate-shimmer">🎨 The ArtCoin Manifesto 💩</h1>
             <div className="text-left space-y-4 font-sans">
               <p>Nobody wants to buy your Art?</p>
