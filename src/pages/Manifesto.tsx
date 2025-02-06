@@ -20,9 +20,9 @@ const Manifesto = () => {
         </div>
 
         <div className="max-w-3xl mx-auto space-y-8 prose prose-purple">
-          <Card className="p-6 bg-white/95 backdrop-blur-sm shadow-xl">
-            <h1 className="text-4xl font-graffiti mb-6 text-purple-900">🎨 The ArtCoin Manifesto 💩</h1>
-            <div className="text-left space-y-4 font-graffiti">
+          <div className="p-6 backdrop-blur-sm shadow-xl">
+            <h1 className="text-4xl font-sans mb-6 bg-gradient-rainbow from-purple-500 via-pink-500 to-orange-500 bg-clip-text text-transparent animate-shimmer">🎨 The ArtCoin Manifesto 💩</h1>
+            <div className="text-left space-y-4 font-sans">
               <p>Nobody wants to buy your Art?</p>
               <p>Is your NFT collection just a jpeg graveyard?</p>
               <p>You are fed up with cringe internet art shilling?</p>
@@ -30,11 +30,11 @@ const Manifesto = () => {
               <p>Don't worry</p>
               <p>Artcoin will fix it 🚽</p>
             </div>
-          </Card>
+          </div>
 
           <Card className="p-6 bg-white/95 backdrop-blur-sm shadow-xl">
-            <h2 className="text-3xl font-graffiti mb-4 text-purple-900">What is ArtCoin?</h2>
-            <div className="text-left font-graffiti">
+            <h2 className="text-3xl font-sans mb-4 bg-gradient-rainbow from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-shimmer">What is ArtCoin?</h2>
+            <div className="text-left font-sans">
               <p>ArtCoin is the world's first aesthetic prediction market, where art criticism meets crypto absurdity.</p>
               <p>The polymarket of aesthetic prediction.</p>
               <p>The tinder of the artworks.</p>
@@ -43,8 +43,8 @@ const Manifesto = () => {
           </Card>
 
           <Card className="p-6 bg-white/95 backdrop-blur-sm shadow-xl">
-            <h2 className="text-2xl font-graffiti mb-4 text-purple-900">Core Mechanics</h2>
-            <ul className="text-left list-disc pl-6 space-y-2 font-graffiti">
+            <h2 className="text-2xl font-sans mb-4 bg-gradient-rainbow from-pink-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent animate-shimmer">Core Mechanics</h2>
+            <ul className="text-left list-disc pl-6 space-y-2 font-sans">
               <li>Submit artwork for 10,000 $ARTCOIN</li>
               <li>Farm $ARTCOIN by Voting daily on the artistic merit of submitted pieces</li>
               <li>Earn rewards for correctly predicting the community's aesthetic judgment</li>
@@ -55,8 +55,8 @@ const Manifesto = () => {
           </Card>
 
           <Card className="p-6 bg-white/95 backdrop-blur-sm shadow-xl">
-            <h2 className="text-2xl font-graffiti mb-4 text-purple-900">The Unfair Launch</h2>
-            <div className="text-left font-graffiti">
+            <h2 className="text-2xl font-sans mb-4 bg-gradient-rainbow from-yellow-500 via-green-500 to-blue-500 bg-clip-text text-transparent animate-shimmer">The Unfair Launch</h2>
+            <div className="text-left font-sans">
               <p>All airdrops will be unfair, based of your taste regarding your nft collection.</p>
               <p className="mt-4">ex: If you own a CryptoPunk (x3 on your allocation), if you own an BoredApe (allocation divided by 2)</p>
               <p className="mt-4">The list is top secret. But if you send crypto to the team members we could tell you some alpha.</p>
@@ -64,8 +64,8 @@ const Manifesto = () => {
           </Card>
 
           <Card className="p-6 bg-white/95 backdrop-blur-sm shadow-xl">
-            <h2 className="text-2xl font-graffiti mb-4 text-purple-900">White toilet paper</h2>
-            <ol className="text-left list-decimal pl-6 space-y-2 font-graffiti">
+            <h2 className="text-2xl font-sans mb-4 bg-gradient-rainbow from-blue-500 via-indigo-500 to-purple-500 bg-clip-text text-transparent animate-shimmer">White toilet paper</h2>
+            <ol className="text-left list-decimal pl-6 space-y-2 font-sans">
               <li>Artcoin will fix it</li>
               <li>No taste no coins</li>
               <li>We will eradicate internet cringe (or make it infinitely worse, we haven't decided yet)</li>
@@ -86,35 +86,31 @@ const Manifesto = () => {
             <Roadmap />
           </Card>
 
-          <Card className="p-6 bg-white/95 backdrop-blur-sm shadow-xl italic text-purple-800 font-graffiti">
-            <p>PS: If you've read this far, you're probably eligible for our unfair airdrop. Or not. We'll judge that too.</p>
-          </Card>
+          <footer className="mt-12 text-purple-700 space-y-4">
+            <p className="font-graffiti">© 2025 ArtCoin - Making Web3 Weird Again ✨</p>
+            <div className="flex justify-center gap-6">
+              <a 
+                href="https://x.com/artcoin_base" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:text-purple-900 transition-colors"
+              >
+                <Twitter className="w-6 h-6" />
+              </a>
+              <a 
+                href="https://t.me/ahahahartcoin" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:text-purple-900 transition-colors"
+              >
+                <MessageCircle className="w-6 h-6" />
+              </a>
+            </div>
+            <div className="flex justify-center gap-2 text-2xl">
+              🎨 💩 🎨 💩 🎨
+            </div>
+          </footer>
         </div>
-
-        <footer className="mt-12 text-purple-700 space-y-4">
-          <p className="font-graffiti">© 2025 ArtCoin - Making Web3 Weird Again ✨</p>
-          <div className="flex justify-center gap-6">
-            <a 
-              href="https://x.com/artcoin_base" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="hover:text-purple-900 transition-colors"
-            >
-              <Twitter className="w-6 h-6" />
-            </a>
-            <a 
-              href="https://t.me/ahahahartcoin" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="hover:text-purple-900 transition-colors"
-            >
-              <MessageCircle className="w-6 h-6" />
-            </a>
-          </div>
-          <div className="flex justify-center gap-2 text-2xl">
-            🎨 💩 🎨 💩 🎨
-          </div>
-        </footer>
       </div>
     </div>
   );

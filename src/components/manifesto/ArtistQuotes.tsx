@@ -20,7 +20,7 @@ export const ArtistQuotes = () => {
     <div className="space-y-12 relative">
       <div className="flex items-center gap-2 mb-12">
         <Palette className="w-6 h-6 text-purple-900" />
-        <h2 className="text-3xl font-graffiti text-purple-900">Inspirational Artist Quotes</h2>
+        <h2 className="text-3xl font-sans bg-gradient-rainbow from-purple-500 via-pink-500 to-orange-500 bg-clip-text text-transparent animate-shimmer">Inspirational Artist Quotes</h2>
         <span className="text-2xl">🎨</span>
       </div>
 

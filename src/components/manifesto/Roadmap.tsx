@@ -16,7 +16,7 @@ const roadmapItems: RoadmapItem[] = [
 export const Roadmap = () => {
   return (
     <div className="space-y-6">
-      <h2 className="text-3xl font-graffiti text-purple-900 mb-8">Future Roadmap (Maybe)</h2>
+      <h2 className="text-3xl font-sans bg-gradient-rainbow from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent animate-shimmer mb-8">Future Roadmap (Maybe)</h2>
       <div className="relative">
         <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-artcoin-purple/30" />
         {roadmapItems.map((item, index) => (

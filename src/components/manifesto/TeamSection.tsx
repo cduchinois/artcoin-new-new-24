@@ -38,7 +38,7 @@ const teamMembers: TeamMember[] = [
 export const TeamSection = () => {
   return (
     <div className="space-y-6">
-      <h2 className="text-3xl font-graffiti text-purple-900 mb-8">The ArtCoin team Hierarchy</h2>
+      <h2 className="text-3xl font-sans bg-gradient-rainbow from-pink-500 via-orange-500 to-yellow-500 bg-clip-text text-transparent animate-shimmer mb-8">The ArtCoin team Hierarchy</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {teamMembers.map((member, index) => (
           <div 
