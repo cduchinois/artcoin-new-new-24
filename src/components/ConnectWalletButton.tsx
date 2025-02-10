@@ -1,3 +1,4 @@
+
 import { Wallet } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -20,7 +21,20 @@ export const ConnectWalletButton = () => {
     } catch (error: any) {
       console.error('Privy login error:', error);
       
-      // Fallback to MetaMask if Privy fails
+      // Check if we're in an iframe
+      const isInIframe = window !== window.parent;
+      if (isInIframe) {
+        toast({
+          title: "Connection Notice",
+          description: "Please open this app in a new tab to connect your wallet",
+          variant: "destructive",
+        });
+        // Open in new tab
+        window.open(window.location.href, '_blank');
+        return;
+      }
+
+      // Fallback to MetaMask if Privy fails and we're not in an iframe
       if (!metaMaskConnector) {
         toast({
           title: "Connection Error",
