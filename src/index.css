@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
 @tailwind base;
@@ -29,7 +30,7 @@
   }
 
   * {
-    @apply border-border font-['Comic_Sans_MS'];
+    @apply border-border font-['Comic_Sans_MS','Comic_Sans','Chalkboard_SE','TSCu_Comic','casual',sans-serif];
   }
 
   body {
