@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Home, ScrollText, Trophy, Menu } from "lucide-react";
@@ -18,21 +19,21 @@ export const Navigation = () => {
             <div className="flex justify-center items-center gap-6">
               <Link 
                 to="/" 
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-100 hover:bg-purple-200 transition-all text-purple-900 hover:scale-105 transform duration-200 shadow-lg hover:shadow-xl active:shadow-md"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-artcoin-yellow via-artcoin-pink to-artcoin-blue hover:opacity-90 transition-opacity animate-shimmer bg-[length:200%_100%] text-purple-900 hover:scale-105 transform duration-200 shadow-lg hover:shadow-xl active:shadow-md"
               >
                 <Home className="w-6 h-6" />
                 HOME
               </Link>
               <Link 
                 to="/manifesto" 
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-100 hover:bg-purple-200 transition-all text-purple-900 hover:scale-105 transform duration-200 shadow-lg hover:shadow-xl active:shadow-md"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-artcoin-yellow via-artcoin-pink to-artcoin-blue hover:opacity-90 transition-opacity animate-shimmer bg-[length:200%_100%] text-purple-900 hover:scale-105 transform duration-200 shadow-lg hover:shadow-xl active:shadow-md"
               >
                 <ScrollText className="w-6 h-6" />
                 MANIFESTO
               </Link>
               <Link 
                 to="/leaderboard" 
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-100 hover:bg-purple-200 transition-all text-purple-900 hover:scale-105 transform duration-200 shadow-lg hover:shadow-xl active:shadow-md"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-artcoin-yellow via-artcoin-pink to-artcoin-blue hover:opacity-90 transition-opacity animate-shimmer bg-[length:200%_100%] text-purple-900 hover:scale-105 transform duration-200 shadow-lg hover:shadow-xl active:shadow-md"
               >
                 <Trophy className="w-6 h-6" />
                 LEADERBOARD
@@ -45,12 +46,12 @@ export const Navigation = () => {
         </div>
       ) : (
         <div className="mb-8 relative">
-          <div className="text-2xl mb-4 flex justify-end px-4">
+          <div className="text-2xl mb-4 flex justify-center px-4">
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-lg bg-purple-100 hover:bg-purple-200 transition-colors shadow-lg hover:shadow-xl active:shadow-md"
+              className="p-2 rounded-lg bg-gradient-to-r from-artcoin-yellow via-artcoin-pink to-artcoin-blue hover:opacity-90 transition-opacity animate-shimmer bg-[length:200%_100%] text-purple-900 shadow-lg hover:shadow-xl active:shadow-md"
             >
-              <Menu className="w-6 h-6 text-purple-900" />
+              <Menu className="w-6 h-6" />
             </button>
           </div>
           
@@ -58,21 +59,21 @@ export const Navigation = () => {
             <div className="flex flex-col items-center space-y-3 p-4">
               <Link 
                 to="/" 
-                className="flex items-center gap-2 px-6 py-2 w-48 justify-center rounded-lg bg-purple-100 hover:bg-purple-200 transition-all text-purple-900 text-2xl font-bold hover:scale-105 transform duration-200 shadow-lg hover:shadow-xl active:shadow-md"
+                className="flex items-center gap-2 px-6 py-2 w-48 justify-center rounded-lg bg-gradient-to-r from-artcoin-yellow via-artcoin-pink to-artcoin-blue hover:opacity-90 transition-opacity animate-shimmer bg-[length:200%_100%] text-purple-900 text-2xl font-bold hover:scale-105 transform duration-200 shadow-lg hover:shadow-xl active:shadow-md"
               >
                 <Home className="w-6 h-6" />
                 HOME
               </Link>
               <Link 
                 to="/manifesto" 
-                className="flex items-center gap-2 px-6 py-2 w-48 justify-center rounded-lg bg-purple-100 hover:bg-purple-200 transition-all text-purple-900 text-2xl font-bold hover:scale-105 transform duration-200 shadow-lg hover:shadow-xl active:shadow-md"
+                className="flex items-center gap-2 px-6 py-2 w-48 justify-center rounded-lg bg-gradient-to-r from-artcoin-yellow via-artcoin-pink to-artcoin-blue hover:opacity-90 transition-opacity animate-shimmer bg-[length:200%_100%] text-purple-900 text-2xl font-bold hover:scale-105 transform duration-200 shadow-lg hover:shadow-xl active:shadow-md"
               >
                 <ScrollText className="w-6 h-6" />
                 MANIFESTO
               </Link>
               <Link 
                 to="/leaderboard" 
-                className="flex items-center gap-2 px-6 py-2 w-48 justify-center rounded-lg bg-purple-100 hover:bg-purple-200 transition-all text-purple-900 text-2xl font-bold hover:scale-105 transform duration-200 shadow-lg hover:shadow-xl active:shadow-md"
+                className="flex items-center gap-2 px-6 py-2 w-48 justify-center rounded-lg bg-gradient-to-r from-artcoin-yellow via-artcoin-pink to-artcoin-blue hover:opacity-90 transition-opacity animate-shimmer bg-[length:200%_100%] text-purple-900 text-2xl font-bold hover:scale-105 transform duration-200 shadow-lg hover:shadow-xl active:shadow-md"
               >
                 <Trophy className="w-6 h-6" />
                 LEADERBOARD
