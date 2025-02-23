@@ -1,4 +1,5 @@
-import { Trophy, ArrowUp, ArrowDown, Twitter, MessageCircle } from "lucide-react";
+
+import { Trophy, ArrowUp, ArrowDown, Twitter, MessageCircle, Crown, Poop } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -16,6 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Card, CardContent } from "@/components/ui/card";
 
 const MOCK_ARTWORKS = [
   {
@@ -92,6 +94,11 @@ const getRowClass = (goodVotes: number, badVotes: number) => {
 };
 
 const Leaderboard = () => {
+  // Find the artwork with the highest good votes
+  const kingOfMountain = [...MOCK_ARTWORKS].sort((a, b) => b.goodVotes - a.goodVotes)[0];
+  // Find the artwork with the highest bad votes
+  const queenOfPoop = [...MOCK_ARTWORKS].sort((a, b) => b.badVotes - a.badVotes)[0];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-artcoin-yellow via-artcoin-pink to-artcoin-blue">
       <div className="container mx-auto px-4 py-8 text-center">
@@ -101,6 +108,47 @@ const Leaderboard = () => {
           <div className="flex items-center justify-center gap-2 mb-6">
             <Trophy className="w-8 h-8 text-purple-900" />
             <h1 className="text-3xl font-bold text-purple-900">Taste Ranking</h1>
+          </div>
+
+          {/* Top Artists Section */}
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            {/* King of the Mountain */}
+            <Card className="bg-gradient-to-r from-yellow-100 to-yellow-200 shadow-lg">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <Crown className="w-6 h-6 text-yellow-600" />
+                  <h2 className="text-2xl font-bold text-yellow-800">King of the Mountain</h2>
+                </div>
+                <div className="flex flex-col items-center">
+                  <img
+                    src={kingOfMountain.image}
+                    alt={kingOfMountain.name}
+                    className="w-32 h-32 rounded-lg object-cover shadow-lg mb-2"
+                  />
+                  <p className="text-lg font-semibold text-yellow-800">{kingOfMountain.name}</p>
+                  <p className="text-green-600 font-medium">🎨 {kingOfMountain.goodVotes} votes</p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Queen of the 💩 */}
+            <Card className="bg-gradient-to-r from-brown-100 to-brown-200 shadow-lg" style={{ backgroundColor: '#faf0e6' }}>
+              <CardContent className="p-6">
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <Poop className="w-6 h-6 text-brown-600" />
+                  <h2 className="text-2xl font-bold text-purple-800">Queen of the 💩</h2>
+                </div>
+                <div className="flex flex-col items-center">
+                  <img
+                    src={queenOfPoop.image}
+                    alt={queenOfPoop.name}
+                    className="w-32 h-32 rounded-lg object-cover shadow-lg mb-2"
+                  />
+                  <p className="text-lg font-semibold text-purple-800">{queenOfPoop.name}</p>
+                  <p className="text-red-600 font-medium">💩 {queenOfPoop.badVotes} votes</p>
+                </div>
+              </CardContent>
+            </Card>
           </div>
 
           <div className="mb-6 flex flex-col md:flex-row gap-4">
