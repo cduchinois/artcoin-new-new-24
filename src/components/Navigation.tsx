@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Home, ScrollText, Trophy, Menu } from "lucide-react";
@@ -46,15 +45,13 @@ export const Navigation = () => {
         </div>
       ) : (
         <div className="mb-8 relative">
-          <div className="text-2xl mb-4 text-purple-900 flex justify-between items-center px-4">
-            <span>🎨 💩 🎨</span>
+          <div className="text-2xl mb-4 flex justify-end px-4">
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 rounded-lg bg-purple-100 hover:bg-purple-200 transition-colors shadow-lg hover:shadow-xl active:shadow-md"
             >
               <Menu className="w-6 h-6 text-purple-900" />
             </button>
-            <span>💩 🎨 💩</span>
           </div>
           
           <nav className={`transition-all duration-300 ease-in-out ${isMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
